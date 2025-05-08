@@ -52,3 +52,30 @@ n \\
 k
 \end{pmatrix} = \frac{n!}{k!(n-k)!}
 $$
+
+Example: Let $X=\left\{ a, b, c, d \right\}$. Let $A=\left\{ b, d \right\}$; $B=\left\{ a, b \right\}$, $A, B\subseteq X$.
+
+Lets enumerate $X$ to make it a little easier to read: $X\to \{ x_{1}, x_{2}, x_{3}, x_{4} \}$.
+
+Under this enumeration, $A$ can be identified by $\{ x_{2}, x_{4} \}\to(0, 1, 0, 1)$
+
+Define the cartesian product:
+- Let $X, Y$ be sets. Then $X\times Y = \{ (x, y) : x\in X, y\in Y \}$
+
+Expanding the cartesian product to $n$ number of sets, we have
+$$
+X_{1}\times X_{2}\times\cdots \equiv \{ (x_{1}, x_{2}, \dots, x_{n}) : x_{i}\in X_{i}, i\in \mathbb{N} \}
+$$
+Uniquely, we denote $X\times X\times\cdots \equiv X^n$
+
+Note that $f : [n]\to X$ is bijective to $(f(1), f(2), \dots, f(n))\in X^n$
+
+Definition of an enumeration:
+
+Let $X$ be a finite set with $|X|=n$, then a bijection $h : [n]\to X$ is called an enumeration of $X$
+
+Definition of a power set
+
+Let $X$ be a set. Then, $\mathcal{P}(x)=\{ A\subseteq X \}$ is the power set of $X$
+
+Theorem: Let $X$ be a finite set such that $|X|=n$. Then, there is a bijection between $\mathcal{P}(x)$ and $\{ 0,1 \}^n$
