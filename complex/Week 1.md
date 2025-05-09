@@ -164,3 +164,7 @@ $$
 \{ z : |z-p| = \lambda|z-q| \}
 $$
 - We'll come back to this later
+### Stereographic projection
+- DRAW SOME DIAGRAMS HERE
+Identify the complex plane as a sphere instead of a plane. By convention, we ignore the north pole
+- $0\in \mathbb{C}$ corresponds to the south pole
