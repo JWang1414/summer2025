@@ -95,3 +95,21 @@ $$
 This has an analog in PDEs. Define $a,b,c,d,e,f$ all as functions of $(x, y)$
 - The classifications above still hold, just with the functions instead of the variables. The names are all the same
 - We call them elliptic, parabolic, and hyperbolic PDEs
+### Intro to the Wave Equation
+$$
+u_{tt} - c^2 u_{x x} = 0
+$$
+Where $t$ is time and the spatial variable $x$ is valid on the interval $-\infty<x<\infty$
+
+Allow us to rewrite the equation as:
+$$
+(\partial_{tt} - c^2\partial_{x x})u= (\partial_{t}-c \partial_{x})(\partial_{t} + c \partial_{x})u=0
+$$
+- That's a really strange and interesting thing you can do with derivatives
+
+Theorem (not really): the general solution to the wave equation above is
+$$
+u(x, t) = f(x+ct) + g(x-ct)
+$$
+- Visualise this as the sum of a left moving and right moving transport. Both of these transport functions are moving at the same speed
+- This tells us that the wave equation is built from interference between two waves
