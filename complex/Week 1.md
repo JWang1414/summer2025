@@ -24,7 +24,7 @@ $$
 	- $\mathbb{C}$ can be imagined as a 2-D vector space over $\mathbb{R}$
 	- You can write vector and matrix analogs for complex numbers and complex operations
 - Where we have $x+iy \equiv (x, y)$
-- REMEMBER TO ADD AN IMAGE HERE
+![[Pasted image 20250512214327.png]]
 
 It is easier to define multiplication if we use the polar plane, instead of the cartesian plane. In this case the magnitude of a complex number is the radius $r$, and it has an angle to the real-axis, $\theta$
 - $z=x+iy=r(\cos \theta+i\sin \theta)$
@@ -165,6 +165,5 @@ $$
 $$
 - We'll come back to this later
 ### Stereographic projection
-- DRAW SOME DIAGRAMS HERE
 Identify the complex plane as a sphere instead of a plane. By convention, we ignore the north pole
 - $0\in \mathbb{C}$ corresponds to the south pole
