@@ -34,3 +34,8 @@ Other notes:
 Consequential theorems:
 1. $S$ is open $\iff$ $S\cap \partial S = \emptyset$
 2. $S$ is closed $\iff$ $S^c$ is open
+
+A set $S\subseteq \mathbb{C}$ is *connected* if $\forall p,q\in S$ there is a *polygonal path* between $p$ and $q$
+- A polygonal path is a series of straight lines, like a zig-zag
+- Continuous paths also work, but we have not defined those yet
+- DRAWING SOME DIAGRAMS MIGHT HELP HERE
