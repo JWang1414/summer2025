@@ -112,4 +112,5 @@ $$
 u(x, t) = f(x+ct) + g(x-ct)
 $$
 - Visualise this as the sum of a left moving and right moving transport. Both of these transport functions are moving at the same speed
-- This tells us that the wave equation is built from interference between two waves
+- This tells us that the wave equation is built from interference between two wave
+- 
