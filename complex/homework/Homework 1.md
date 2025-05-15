@@ -55,3 +55,50 @@ This function will be zero for these values of $w$. Therefore, that is the locus
 g.
 True whenever $\mathrm{Re}(z)=0$, and therefore is composed of a line on the complex axis
 ### Question 7
+The roots of this quadratic can be expressed with the quadratic equation
+$$
+\frac{-b\pm \sqrt{ b^2-4ac }}{2a} = -\frac{b}{2a} \pm \frac{\sqrt{ b^2-4ac }}{2a}
+$$
+Notice that the first term $-b / 2a$ is real, and the second term, $\sqrt{ b^2-4ac } / 2a$ is always complex. From this, we can assert that
+$$
+\overline{-\frac{b}{2a} + \frac{\sqrt{ b^2-4ac }}{2a}} = -\frac{b}{2a} - \frac{\sqrt{ b^2-4ac }}{2a}
+$$
+And so the two roots are always complex conjugates of each other
+### Question 8
+- Ask for help?
+- A lot of computations are required for this one, maybe try using a calculator next time
+### Question 9
+Show that $|z|=1 \implies \frac{1}{z}=\bar{z}$. Note that we can write any arbitrary complex number with magnitude 1 in polar coordinates as:
+$$
+re^{ i\theta } = |z|e^{ i\theta } = e^{ i\theta }
+$$
+In this case, we have:
+$$
+\frac{1}{z} = \frac{1}{e^{ i\theta }} = e^{ -i\theta } = \overline{e^{ i\theta }}
+$$
+Which is what we wanted to show
+
+Show that $\frac{1}{z}=\bar{z}\implies|z|=1$. Fix $z\in \mathbb{C}$, and express it as an arbitrary complex number in polar coordinates
+$$
+\frac{1}{z} = \bar{z} \Rightarrow \frac{1}{|z|e^{ i\theta }} = \overline{|z|e^{ i\theta }} \Rightarrow \frac{1}{|z|}e^{ -i\theta } = |z|e^{ -i\theta } \Rightarrow \frac{1}{|z|} = |z| \Rightarrow |z|^2 = 1
+$$
+Which implies that $|z|=1$, as needed
+### Question 11
+Left side is
+$$
+\begin{align}
+|z+w|^2 - |z-w|^2 & = |z|^2 + |w|^2 + z\bar{w} + \bar{z}w - \left[ |z|^2 + |w|^2 - z\bar{w} - \bar{z}w \right]  \\
+ & =2z\bar{w}+2\bar{z}w = 2(z\bar{w}+\bar{z}w) \\
+ & =2\left[ 2(xa+yb) \right]  \\
+ & =4(xa+yb)
+\end{align}
+$$
+Right side is
+$$
+\begin{align}
+4\mathrm{Re}(z\bar{w}) & =4\mathrm{Re}((x+iy)(a-ib)) \\
+ & =4\mathrm{Re}\left[ xa-ixb+iya+yb \right]  \\
+ & = 4(xa+yb)
+\end{align}
+$$
+Therefore, we have $\mathrm{LS=RS}$ and this equality is true.
