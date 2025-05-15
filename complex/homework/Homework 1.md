@@ -65,8 +65,37 @@ $$
 $$
 And so the two roots are always complex conjugates of each other
 ### Question 8
-- Ask for help?
-- A lot of computations are required for this one, maybe try using a calculator next time
+Suppose that $z\in \mathbb{C}$ and $z=x+iy$
+
+Right-side
+$$
+\begin{align}
+|z+A|^2 - 2\mathrm{Re}(Az) & = |x+iy+A|^2 - 2\mathrm{Re}(A(x+iy)) \\
+ & =x^2+y^2+A^2+2xA - 2\mathrm{Re}(Ax+iAy) \\
+ & =|z|^2 + A^2 + 2xA - 2xA = |z|^2 + A^2
+\end{align}
+$$
+Therefore, we have $\mathrm{LS=RS}$, as needed
+
+For the second part, we have $z,B\in \mathbb{C}$. I will write $B=a+ib$
+
+Left-side
+$$
+\begin{align}
+|z|^2 + 2\mathrm{Re}(Bz) & =|z|^2 + 2\mathrm{Re}\left[ (a+ib)(x+iy) \right]  \\
+ & =|z|^2 + 2\mathrm{Re}(ax-by+iay+ibx) \\
+ & = |z|^2 + 2(ax-by)
+\end{align}
+$$
+Right-side
+$$
+\begin{align}
+|z+\bar{B}|^2 - |B|^2 & = |(x+iy)+(a-ib)|^2 - |B|^2 \\
+ & = |z|^2 + |B|^2 + 2(ax-by) - |B|^2 \\
+ & =|z|^2 + 2(ax-by)
+\end{align}
+$$
+And so we have $\mathrm{LS=RS}$.
 ### Question 9
 Show that $|z|=1 \implies \frac{1}{z}=\bar{z}$. Note that we can write any arbitrary complex number with magnitude 1 in polar coordinates as:
 $$
@@ -102,3 +131,26 @@ $$
 \end{align}
 $$
 Therefore, we have $\mathrm{LS=RS}$ and this equality is true.
+### Question 17
+Fix $z,w\in \mathbb{C}$ such that $w\neq 0$
+
+Define $z=x+iy$ and $w=u+iv$.
+
+Left-side
+$$
+\begin{align}
+\left| \frac{z}{w} \right|  & = \left| \frac{x+iy}{u+iv} \right| = \left| \frac{(x+iy)(u-iv)}{(u+iv)(u-iv)} \right|  \\
+ & = \left| \frac{xu+yv-ixv+iyu}{u^{2}+v^{2}} \right|  \\
+ & = \frac{1}{u^{2}+v^{2}} \sqrt{ (x^{2}+y^{2})(u^{2}+v^{2}) } \\
+ & =\frac{\sqrt{ x^{2}+y^{2} }}{\sqrt{ u^{2}+v^{2} }}
+\end{align}
+$$
+Right-side
+$$
+\begin{align}
+\frac{|z|}{|w|} & = \frac{|x+iy|}{|u+iv|} \\
+ & = \frac{\sqrt{ x^{2}+y^{2} }}{\sqrt{ u^{2}+v^{2} }}
+\end{align}
+$$
+$\mathrm{LS=RS}$ as needed.
+### Question 19
