@@ -84,7 +84,7 @@ $$
 $$
 Ax^2+Bxy+Cy^2 + Dx + Ey + F=0
 $$
-We can check the shape of this function with the determinant
+In accordance with conic classifications of functions, we can use the determinant to claim that the shape of this function is:
 $$
 \begin{align}
 B^2-4AC<0,  &  & \text{equation is an ellipse} \\
@@ -92,51 +92,54 @@ B^2-4AC=0,  &  & \text{equation is a parabola} \\
 B^2-4AC>0,  &  & \text{equation is a hyperbola}
 \end{align}
 $$
-This has an analog in PDEs. Define $a,b,c,d,e,f$ all as functions of $(x, y)$
-- The classifications above still hold, just with the functions instead of the variables. The names are all the same
-- We call them elliptic, parabolic, and hyperbolic PDEs
+For PDEs, we instead use the equation
+$$
+au_{xx}+bu_{xy} + cu_{yy} + du_{x} + eu_{y} + fu=0
+$$
+Where similarly at least one of $a$ to $c$ is non-zero. We use the same conic equations and classifications for PDEs
+- That is, the classifications use the same equation, and share the same name
+- However, this does not mean that the PDEs behave similarly to their conic counterparts
+
+Theorem:
+Consider any general PDE of the form given above, where $a,b,c$ are not all 0. Then there exists a linear change of variables $\xi(x, y), \eta(x,y)$ such that the new coordinates $(\xi, \eta)$, the PDE is transformed as follows:
+$$
+\begin{align}
+b^2-4ac<0 & \implies u_{\xi \xi} + u_{\eta \eta} + F(u_{\xi}, u_{\eta}, u)=0 \\
+b^2-4ac=0 & \implies u_{\eta \eta} + F(u_{\xi}, u_{\eta}, u)=0 \\
+b^2-4ac>0 & \implies u_{\xi \eta} + F(u_{\xi}, u_{\eta}, u)=0
+\end{align}
+$$
+Where $F$ is some linear function of 3 variables
 ### Intro to the Wave Equation
+
 $$
 u_{tt} - c^2 u_{x x} = 0
 $$
 Where $t$ is time and the spatial variable $x$ is valid on the interval $-\infty<x<\infty$
 
-Allow us to rewrite the equation as:
+The operator for this equation can be factored, transforming the equation into
 $$
-(\partial_{tt} - c^2\partial_{x x})u= (\partial_{t}-c \partial_{x})(\partial_{t} + c \partial_{x})u=0
+\left( \frac{ \partial  }{ \partial t } -c \frac{ \partial  }{ \partial x }  \right)\left( \frac{ \partial  }{ \partial t } +c \frac{ \partial  }{ \partial x }  \right)u=0
 $$
-- That's a really strange and interesting thing you can do with derivatives
-
-Theorem (not really): the general solution to the wave equation above is
+Which has the general solution:
 $$
 u(x, t) = f(x+ct) + g(x-ct)
 $$
 - Visualise this as the sum of a left moving and right moving transport. Both of these transport functions are moving at the same speed
-- This tells us that the wave equation is built from interference between two wave
+- This tells us that the wave equation is built from interference between two waves
 ### Initial Value Problems
-Using this example with the wave equation:
-$$
-u_{tt} = c^2u_{x x}
-$$
-Which we will make valid for $-\infty < x<\infty, t>0$. Furthermore, we have the initial values:
+Now, we are interested in solving the wave equation with the initial conditions $u(x,0)=\phi(x)$ and $u_{t}(x,0)=\psi(x)$
 - $u(x, 0) = \phi(x)$ which can be imagined as the initial displacement
 - $u_{t}(x, 0) = \psi(x)$ which can be imagined as the initial velocity
-- Both of which valid for $-\infty<x<\infty$
-The IVP solution formula, D'Alembert's Formula is defined to be:
+The solution for this initial value problem is specified by d'Alembert's formula
 $$
-u(x,t) = \frac{1}{2} \left[ \phi(x+ct) + \psi(x-ct) \right]  + \frac{1}{2C} \int^{x+ct}_{x-ct} \psi(s) \, ds
+u(x,t) = \frac{1}{2} \left[ \phi(x+ct) + \phi(x-ct) \right]  + \frac{1}{2C} \int_{x-ct}^{x+ct} \psi(s) \, ds 
 $$
+- The derivation for this formula relies on assuming $\phi$ has a continuous second derivative and $\psi$ have continuous first derivative
+- I'm not sure what $s$ is, but in the textbook it's used as a dummy variable used to replace $x$
 
-Example: Wave equation with $u(x, 0) \equiv 0, u_{t}(x,0) = \cos x$
+EVERYTHING BEYOND THIS POINT IS UNEDITED
 
-Then we have
-$$
-u(x, t) = 0 + \frac{1}{2C} \int_{x-ct}^{x+ct} \cos s \, ds
-$$
-Which yields the final formula
-$$
-\frac{1}{c}\cos x \sin(ct)
-$$
 
 ### Domain of Dependence
 Fix $(x_{1},t_{1})$, then, by D'Alembert, $u(x_{1},t_{1})$ depends on initial displacements at $x_{1}-ct_{1}$ and $x_{1}+ct_{1}$ and all the initial velocities between them. So, we are interested in the interval $[x_{1}-ct_{1}, x_{1}+ct_{1}]$
