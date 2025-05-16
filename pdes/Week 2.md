@@ -113,4 +113,104 @@ u(x, t) = f(x+ct) + g(x-ct)
 $$
 - Visualise this as the sum of a left moving and right moving transport. Both of these transport functions are moving at the same speed
 - This tells us that the wave equation is built from interference between two wave
-- 
+### Initial Value Problems
+Using this example with the wave equation:
+$$
+u_{tt} = c^2u_{x x}
+$$
+Which we will make valid for $-\infty < x<\infty, t>0$. Furthermore, we have the initial values:
+- $u(x, 0) = \phi(x)$ which can be imagined as the initial displacement
+- $u_{t}(x, 0) = \psi(x)$ which can be imagined as the initial velocity
+- Both of which valid for $-\infty<x<\infty$
+The IVP solution formula, D'Alembert's Formula is defined to be:
+$$
+u(x,t) = \frac{1}{2} \left[ \phi(x+ct) + \psi(x-ct) \right]  + \frac{1}{2C} \int^{x+ct}_{x-ct} \psi(s) \, ds
+$$
+
+Example: Wave equation with $u(x, 0) \equiv 0, u_{t}(x,0) = \cos x$
+
+Then we have
+$$
+u(x, t) = 0 + \frac{1}{2C} \int_{x-ct}^{x+ct} \cos s \, ds
+$$
+Which yields the final formula
+$$
+\frac{1}{c}\cos x \sin(ct)
+$$
+
+### Domain of Dependence
+Fix $(x_{1},t_{1})$, then, by D'Alembert, $u(x_{1},t_{1})$ depends on initial displacements at $x_{1}-ct_{1}$ and $x_{1}+ct_{1}$ and all the initial velocities between them. So, we are interested in the interval $[x_{1}-ct_{1}, x_{1}+ct_{1}]$
+
+- I have no clue what's going on. Everything beyond this point is probably nonsense
+
+$$
+(0<t_{2}<t_{1})\to \left[ x_{1}-c(t_{1}-t_{2}), x_{1}+c(t_{1}-t_{2}) \right]
+$$
+
+### Domain of influence
+Fix $(x_{0}, 0)$. At a later time $t_{1}>0$, which points are affected by initial data?
+$$
+\to \left[ x_{0}-ct_{1}, x_{0}+ct_{1} \right]
+$$
+If $\phi, \psi$ vanish for $|x|>R$, then $u=0$ for $|x|>R+ct$
+
+- He drew some triangular diagrams, I don't know what they mean. I hope they're in the textbook
+
+### Energy (wave equation)
+Suppose $u$ is a solution to $u_{tt} = \frac{T}{\rho} u_{x x}$. $C=\sqrt{ T / \rho }$
+
+- This system is typically used to describe a vibrating string
+- $T$ is tension, $\rho$ is the mass
+
+Recall that the kinetic energy is
+- $\frac{1}{2}mv^2$
+- $\frac{1}{2}\rho \int_{-\infty}^{\infty} u_{t}^2 \, dx$
+- We will assume that this integral converges
+
+$\phi$ and $\psi$ are smooth with compact support, that is, they are zero outside of some interval.
+- $u$ and $u_{t}$ vanish for $|x|>R+ct$
+
+$$
+\frac{d}{dt}KE = \rho \int_{-\infty}^{\infty} u_{t}u_{tt} \, dx = \int_{-\infty}^{\infty} u_{t}Tu_{x x} \, dx = T\left[ u_{t}u_{x}|^\infty_{-\infty} - \int_{-\infty}^{\infty} u_{ut}u_{x} \, dx  \right]
+$$
+Where we have used integration by parts for this last step. Furthermore, the boundary terms inside vanish at infinity, so
+$$
+=-T\int_{-\infty}^{\infty} u_{tx}u_{x} \, dx  = -T\int_{-\infty}^{\infty} \left( \frac{1}{2}u^{2}_{x} \right) _{t} \, dx
+$$
+Rearranging this result, we obtain the potential energy
+$$
+PE = -\frac{d}{dt}\int_{-\infty}^{\infty} \frac{1}{2}Tu^{2}_{x} \, dx
+$$
+If $E = KE+PE$, then
+$$
+\frac{d}{dt}E = \frac{d}{dt}(KE+PE) = 0
+$$
+
+Because of conservation of energy, $E=\frac{1}{2}\int_{-\infty}^{\infty} (\rho u^{2}_{t} + Tu^{2}_{x}) \, dx$ is constant in time.
+
+Lets take the wave equation with initial values $u(x, 0)=\phi(x)$ and $u_{t}(x,0) = \psi(x)$. Suppose that we have two unique solutions to this IVP. Denote them as $u_{1}$ and $u_{2}$.
+
+We want to prove that this problem has one unique solution. We will define a new solution, by superposition
+$$
+u=u_{1}-u_{2}
+$$
+It has initial values $u(x,0)=0$ and $u_{t}(x,0)=0$, because it is the superposition of the the previous two. We need $u=0$ to prove there is a unique solution.
+$$
+E(0)=0\Rightarrow E(t)=E(0)=0=\frac{1}{2}\int_{-\infty}^{\infty} (u^{2}_{t}+c^2u^{2}_{x}) \, dx
+$$
+And since the energy on the right side much be greater or equal to zero, the portion inside the integral must be equal to zero
+$$
+u^{2}_{t}+c^2u^{2}_{x}=0\Rightarrow u^{2}_{t}=u^{2}_{x}=0
+$$
+Now that we know this we can determine the total function $u$ is constant, and equal to zero because $u(x,0)=0$.
+### Diffusion on the whole real line
+- The spreading of particles or heat through space
+$$
+\begin{align}
+ & u_{t} = ku_{x x} \\
+ & u(x,0)=\phi(x)
+\end{align}
+$$
+Where the interval is defined as $-\infty<x<\infty$ and $t\geq 0$
+
+- WHAT
