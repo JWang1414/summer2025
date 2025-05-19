@@ -135,85 +135,90 @@ The solution for this initial value problem is specified by d'Alembert's formula
 $$
 u(x,t) = \frac{1}{2} \left[ \phi(x+ct) + \phi(x-ct) \right]  + \frac{1}{2C} \int_{x-ct}^{x+ct} \psi(s) \, ds 
 $$
-- The derivation for this formula relies on assuming $\phi$ has a continuous second derivative and $\psi$ have continuous first derivative
+- If we assume that $\phi$ has a continuous second derivative, and $\psi$ has a continuous first derivative, then we can conclude $u$ has continuous second partial derivatives in $x$ and $t$.
+	- This makes it a full solution for the wave equation and specified initial conditions
 - I'm not sure what $s$ is, but in the textbook it's used as a dummy variable used to replace $x$
 
-EVERYTHING BEYOND THIS POINT IS UNEDITED
+Example: Plucked string
+- For a vibrating string, the speed is $c=\sqrt{ T / \rho }$, where $T$ is the tension, and $\rho$ is the mass density
+Consider an infinitely long string with initial position
+$$
+\phi(x) = \begin{cases}
+b-\frac{b|x|}{a} & \text{for } |x|<a \\
+0 & \text{for } |x|>a
+\end{cases}
+$$
+- Initial velocity $\psi(x)\equiv 0$ for all $x$
 
+Using d'Alembert's formula, the general solution is
+$$
+\frac{1}{2} \left[ \phi(x+ct) + \phi(x-ct) \right]
+$$
+- This is effectively the sum of two triangle functions, one moving to the right, and one to the left
 
-### Domain of Dependence
-Fix $(x_{1},t_{1})$, then, by D'Alembert, $u(x_{1},t_{1})$ depends on initial displacements at $x_{1}-ct_{1}$ and $x_{1}+ct_{1}$ and all the initial velocities between them. So, we are interested in the interval $[x_{1}-ct_{1}, x_{1}+ct_{1}]$
+When specifying the functions with values, one must take care to evaluate within the given conditions. For example, for $x<-\frac{3}{2}a$ and $x> \frac{3}{2}a$, for $t=a /2c$, then both $\phi$ functions will evaluate to zero.
+$$
+u(x, t) = \frac{1}{2}\left[ \phi\left( x+\frac{1}{2}a \right) + \phi\left( x-\frac{1}{2}a \right) \right] \to 0
+$$
+Otherwise, if $-3a /2<x<-a /2$ or $a /2<x<3a /2$, then only one function will evaluate, and the other will simplify to zero.
 
-- I have no clue what's going on. Everything beyond this point is probably nonsense
+The only case where both evaluate is when $|x|<a /2$
+$$
+u(x,t) = \frac{1}{2}\left[ \phi\left( x+\frac{1}{2}a \right) + \phi\left( x-\frac{1}{2}a \right) \right] = \frac{1}{2}\left[ b-\frac{b\left( x+\frac{1}{2}a \right)}{a}+b-\frac{b\left( \frac{1}{2}a-x \right)}{a} \right] =\frac{1}{2}b
+$$
+### Causality
+Going back to the example with the vibrating string, the effect of an initial velocity $\psi$ is a wave spreading out at speed $\leq c$. The maximum speed at which the string can vibrate is specified by $c$. This equivalently means that no part of the string can go faster than $c$. This concept is known as the *principle of causality*, and is expressed with either the domain of *influence* or *dependence*.
 
-$$
-(0<t_{2}<t_{1})\to \left[ x_{1}-c(t_{1}-t_{2}), x_{1}+c(t_{1}-t_{2}) \right]
-$$
+**Domain of Influence**
+An initial condition at the point $(x_{0},0)$ can affect the solution for $t>0$ only in the marked shaded sector. This shaded sector is what is called the domain of influence of the point $(x_{0},0)$
+- The domain of influence appears to be the possible changes that can happen based on the different initial conditions defined at some point
 
-### Domain of influence
-Fix $(x_{0}, 0)$. At a later time $t_{1}>0$, which points are affected by initial data?
+**Domain of Dependence**
+Alternatively, given a fixed point $(x,t)$ with $t>0$, how is another value $u(x,t)$ determined from the initial data $\phi$, $\psi$? It depends on the values of $\phi$ at the two points $x\pm ct$ and the values of $\psi$ within the interval $[x-ct, x+ct]$. The interval $(x-ct, x+ct)$ is the interval of dependence, of the point $(x,t)$ on $t=0$. The shaded region is the domain of dependence of the point $(x,t)$
+- I think this is supposed to the be the region of points that can be affected by the initial values at the given point?
+### Energy
+Define an infinite string with constants $\rho$, $T$, and $c=\sqrt{ T /\rho }$. Then, the wave equation turns into
 $$
-\to \left[ x_{0}-ct_{1}, x_{0}+ct_{1} \right]
+u_{tt} = c^2u_{xx} = \frac{T}{\rho}u_{xx} \Rightarrow \rho u_{tt} = Tu_{xx}
 $$
-If $\phi, \psi$ vanish for $|x|>R$, then $u=0$ for $|x|>R+ct$
+Which remains defined over $-\infty<x<\infty$. We will define the kinetic energy as
+$$
+KE = \frac{1}{2}\rho \int u^{2}_{t} \, dx
+$$
+Furthermore, we will assume that $\phi(x)$ and $\psi(x)$ converge on the interval from $-\infty$ to $\infty$. This is not unreasonable to claim, since from causality, they should vanish outside of some interval $\{ |x|\leq R \}$.
 
-- He drew some triangular diagrams, I don't know what they mean. I hope they're in the textbook
+Now, differentiating the kinetic energy by time, we get
+$$
+\frac{d}{dt}KE = \rho \int_{-\infty}^{\infty} u_{t}u_{tt} \, dx = T\int_{-\infty}^{\infty} u_{t}u_{xx} \, dx = Tu_{t}u_{xx}|^\infty_{-\infty}-T\int_{-\infty}^{\infty} u_{tx}u_{x} \, dx
+$$
+Where I have used the version of the wave equation previously defined in this section, and then used integration by parts. We have previously established that $Tu_{t}u_{x}$ will vanish at $x=\pm \infty$, and so we are left with
+$$
+\frac{d}{dt}KE= -T\int_{-\infty}^{\infty} u_{tx}u_{x} \, dx = -\frac{d}{dt}\int_{-\infty}^{\infty} \frac{1}{2}Tu^{2}_{x} \, dx
+$$
+If we define the potential energy as $\frac{1}{2}T\int u^{2}_{x}\, dx$ and the total energy as $E=KE+PE$ then we have established:
+$$
+\frac{d}{dt}KE=-\frac{d}{dt}PE\implies \frac{d}{dt}E=0
+$$
+And furthermore,
+$$
+E=\frac{1}{2}\int_{-\infty}^{\infty} (\rho u^{2}_{t}+Tu^{2}_{x}) \, dx
+$$
+is constant independent of time $t$. Unsurprisingly, we have established that, within the realm of the wave equation, energy is conserved.
+- Sometimes the definition $E$ will be modified by some constant factor, but energy is still conserved
+- $E$ must be positive
 
-### Energy (wave equation)
-Suppose $u$ is a solution to $u_{tt} = \frac{T}{\rho} u_{x x}$. $C=\sqrt{ T / \rho }$
+Example: Energy of a plucked string
+$$
+E=\frac{1}{2}T\int_{-\infty}^{\infty} \phi^{2}_{x} \, dx =\frac{1}{2}T\left( \frac{b}{a} \right)^2 (2a)= \frac{Tb^2}{a}
+$$
+### Relation to Physics
+In Maxwell's equations, the electric and magnetic fields satisfy the 3-D wave equation, where $c$ is instead the speed of light.
 
-- This system is typically used to describe a vibrating string
-- $T$ is tension, $\rho$ is the mass
-
-Recall that the kinetic energy is
-- $\frac{1}{2}mv^2$
-- $\frac{1}{2}\rho \int_{-\infty}^{\infty} u_{t}^2 \, dx$
-- We will assume that this integral converges
-
-$\phi$ and $\psi$ are smooth with compact support, that is, they are zero outside of some interval.
-- $u$ and $u_{t}$ vanish for $|x|>R+ct$
-
+The principle of causality is the cornerstone of relativity. A signal at the position $x_{0}$ at the instant $t_{0}$ cannot move faster than the speed of light. And so the domain of influence consists of all the points that can be reach by the signal of speed $c$.
+- Curiously, solutions of the 3-D wave equation always travel at speed $c$ and never slower.
+### Diffusion on the whole line
+The diffusion equation is defined as
 $$
-\frac{d}{dt}KE = \rho \int_{-\infty}^{\infty} u_{t}u_{tt} \, dx = \int_{-\infty}^{\infty} u_{t}Tu_{x x} \, dx = T\left[ u_{t}u_{x}|^\infty_{-\infty} - \int_{-\infty}^{\infty} u_{ut}u_{x} \, dx  \right]
+u_{t}=ku_{xx}
 $$
-Where we have used integration by parts for this last step. Furthermore, the boundary terms inside vanish at infinity, so
-$$
-=-T\int_{-\infty}^{\infty} u_{tx}u_{x} \, dx  = -T\int_{-\infty}^{\infty} \left( \frac{1}{2}u^{2}_{x} \right) _{t} \, dx
-$$
-Rearranging this result, we obtain the potential energy
-$$
-PE = -\frac{d}{dt}\int_{-\infty}^{\infty} \frac{1}{2}Tu^{2}_{x} \, dx
-$$
-If $E = KE+PE$, then
-$$
-\frac{d}{dt}E = \frac{d}{dt}(KE+PE) = 0
-$$
-
-Because of conservation of energy, $E=\frac{1}{2}\int_{-\infty}^{\infty} (\rho u^{2}_{t} + Tu^{2}_{x}) \, dx$ is constant in time.
-
-Lets take the wave equation with initial values $u(x, 0)=\phi(x)$ and $u_{t}(x,0) = \psi(x)$. Suppose that we have two unique solutions to this IVP. Denote them as $u_{1}$ and $u_{2}$.
-
-We want to prove that this problem has one unique solution. We will define a new solution, by superposition
-$$
-u=u_{1}-u_{2}
-$$
-It has initial values $u(x,0)=0$ and $u_{t}(x,0)=0$, because it is the superposition of the the previous two. We need $u=0$ to prove there is a unique solution.
-$$
-E(0)=0\Rightarrow E(t)=E(0)=0=\frac{1}{2}\int_{-\infty}^{\infty} (u^{2}_{t}+c^2u^{2}_{x}) \, dx
-$$
-And since the energy on the right side much be greater or equal to zero, the portion inside the integral must be equal to zero
-$$
-u^{2}_{t}+c^2u^{2}_{x}=0\Rightarrow u^{2}_{t}=u^{2}_{x}=0
-$$
-Now that we know this we can determine the total function $u$ is constant, and equal to zero because $u(x,0)=0$.
-### Diffusion on the whole real line
-- The spreading of particles or heat through space
-$$
-\begin{align}
- & u_{t} = ku_{x x} \\
- & u(x,0)=\phi(x)
-\end{align}
-$$
-Where the interval is defined as $-\infty<x<\infty$ and $t\geq 0$
-
-- WHAT
+It is defined for $-\infty<x<\infty$ and $0<t<\infty$. We define the initial conditions $u(x,0)=\phi(x)$
