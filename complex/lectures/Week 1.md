@@ -149,7 +149,7 @@ $$
 ### Circles and Lines
 Write a line as the set of values
 $$
-\{ z : |z-c| = |z-q| \}
+\{ z : |z-p| = |z-q| \}
 $$
 Where $p,q$ are two points on a cartesian plane. This line is defined by claiming: "All points that are the same distance from $p$ and $q$"
 

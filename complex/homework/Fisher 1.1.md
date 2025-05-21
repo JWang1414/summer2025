@@ -154,3 +154,42 @@ $$
 $$
 $\mathrm{LS=RS}$ as needed.
 ### Question 19
+De Moivre's theorem:
+$$
+(\cos x+i \sin x)^n=\cos nx+i \sin nx
+$$
+For any integer $n$ and real number $x$
+
+Recall that:
+$$
+\sin ^{2}\theta+\cos ^{2}\theta=1
+$$
+Binomial formula
+$$
+(x+y)^n = \sum_{k=0}^{n} \begin{pmatrix}
+n \\
+k
+\end{pmatrix}x^{n-k}y^k
+$$
+Where the binomial coefficient is defined to be
+$$
+\begin{pmatrix}
+n \\
+k
+\end{pmatrix} = \frac{n!}{k!(n-k)!}
+$$
+Manipulate de Moivre's theorem to solve for $\cos n\theta$
+$$
+\cos n\theta = \frac{1}{2}(\cos n\theta+i\sin n\theta+\cos n\theta - i\sin n\theta)
+$$
+Which can be split into
+$$
+\frac{1}{2}\left[ (\cos \theta+i\sin \theta)^n + (\cos \theta+i\sin \theta)^{-n} \right]
+$$
+For one term, this can be expressed as
+$$
+(\cos \theta+i\sin \theta)^n = \sum_{k=0}^{n} \begin{pmatrix}
+n \\
+k
+\end{pmatrix} \cos^{n-k}\theta (i\sin \theta)^k
+$$
