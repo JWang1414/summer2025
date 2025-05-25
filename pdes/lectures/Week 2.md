@@ -222,3 +222,66 @@ $$
 u_{t}=ku_{xx}
 $$
 It is defined for $-\infty<x<\infty$ and $0<t<\infty$. We define the initial conditions $u(x,0)=\phi(x)$
+
+Properties of the diffusion equation
+1. The translate of any solution $u(x-y, t)$ of any solution $u(x, t)$ is another solution, for any fixed $y$
+2. Any derivative $(u_{x}, u_{t}, u_{xx},\dots)$ of a solution is another solution
+3. Any linear combination of solutions is another solution
+4. An integral of solutions is another solution
+	1. If $S(x, t)$ is a solution, then $S(x-y, t)$ is another solution, and so is $v(x, t) = \int_{-\infty}^{\infty} S(x-y, t)g(y) \, dy$ for any given function $g(y)$
+	2. This is valid so long as the above integral converges
+5. If $u(x, t)$ is a solution, then so is the dilated function $u(\sqrt{ a }x, at)$ for any $a>0$
+	1. This is roughly because, in essence, this dilation is linear
+	2. Taking a derivative of the dilated function, you can show that the resulting function is just the original derivative multiplied by a constant
+
+Define $Q(x,t)$ a particular solution of the diffusion equation for the initial conditions:
+- $Q(x, 0)=1$ for $x>0$
+- $Q(x, 0)=0$ for $x<0$
+These initial conditions have been arbitrarily chosen because they simplify the problem
+
+Skipping over the details, we have:
+$$
+Q(x, t)=\frac{1}{2}+\frac{1}{\sqrt{ \pi }}\int_{0}^{x /\sqrt{ 4kt }} e^{ -p^{2} } \, dp
+$$
+For $t>0$. Where $p=x /\sqrt{ 4kt }$
+
+Now, define $S=\partial Q /\partial x$. By property 2, this is also a solution. Furthermore, define the function
+$$
+u(x, t)=\int_{-\infty}^{\infty} S(x-y)\phi(y) \, dy
+$$
+For $t>0$. For any function $\phi$, this is another solution. Furthermore, it is possible to prove that $u$ is a unique solution to the diffusion equation.
+
+These functions, explicitly are:
+$$
+\begin{align}
+S=\frac{ \partial Q }{ \partial x }  & = \frac{1}{2\sqrt{ \pi kt }}e^{ -x^{2}/4kt } \\
+u(x,t) & =\frac{1}{\sqrt{ 4\pi kt }}\int_{-\infty}^{\infty} e^{ -(x-y)^{2}/4kt }\phi(y) \, dy 
+\end{align}
+$$
+$S(x, t)$ is called the source function, Green's function, fundamental solution, propagator of the diffusion equation, or diffusion kernel.
+- It gives the solution for any initial $\phi$
+- Valid for $t>0$. $t=0$ makes no sense
+### Properties of the Source Function
+- Define for all real $x$ and $t>0$
+- Positive and even in $x$
+- For small $t$ it becomes a spike, for large $t$ it becomes a wide Gaussian
+
+Normalised integral
+$$
+\int_{-\infty}^{\infty} S(x,t) \, dx = \frac{1}{\sqrt{ \pi }} \int_{-\infty}^{\infty} e^{ -q^{2} } \, dq =1
+$$
+Where $q=x /\sqrt{ 4kt }$
+- Without the central spike, the area of the remaining function tends to zero
+
+The value of the solution $u(x,t)$ resembles a weighted average of the initial values around $x$
+$$
+u(x,t) = \int_{-\infty}^{\infty} S(x-y, t)\phi(y) \, dy \approx \sum _{t} S(x-y_{i}, t)\phi(y_{i}) \Delta y_{i}
+$$
+- This is the average of the solutions $S(x-y_{i}, t)$ with weights $\phi(y_{i})$
+
+It will be useful to define the error function, which integrals may often be defined relative to
+$$
+\mathcal{E}rf(x) = \frac{2}{\sqrt{ \pi }} \int_{0}^{x} e^{ -p^2 } \, dp
+$$
+For some $p$. $\mathcal{E}rf(0)=0$ and $\lim_{ x \to \infty }\mathcal{E}rf(x)=1$
+
