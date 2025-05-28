@@ -38,8 +38,7 @@ Consequential theorems:
 A set $S\subseteq \mathbb{C}$ is *connected* if $\forall p,q\in S$ there is a *polygonal path* between $p$ and $q$
 - A polygonal path is a series of straight lines, like a zig-zag
 - Continuous paths also work, but we have not defined those yet
-- DRAWING SOME DIAGRAMS MIGHT HELP HERE
-
+![[Pasted image 20250528162958.png]]
 A given set $D$ contains the *point at infinity* in its interior there exists some $M$ such that $D$ contains all the point $z$ with $|z|>M$
 - Common convention that can make some later things easier
 - The open half-plane $\mathrm{Re}(z)>0$ does not contain the point at infinity
