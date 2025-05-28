@@ -69,3 +69,36 @@ $$
 Given two functions $f$ and $g$, both continuous at the point $z_{0}$, then $f+\lambda g$ and $fg$ are also continuous.
 - If $h$ is some functions continuous at each point of some disc centred at the point $w_{0}=f(z_{0})$, then $h(f(z))$ is also continuous at $z_{0}$
 - This fact allows us to assert that all polynomials are continuous
+### Infinite Series
+An $n$th partial sum is defined as:
+$$
+s_{n} = \sum_{i=1}^{n} z_{i} = z_{1}+z_{2}+\dots z_{n}
+$$
+Just like real series, for complex, the infinite series is this same sum for $n\to \infty$.
+- Definitions of convergent and divergent sums are as expected
+
+For complex numbers, we can defined $z_{j} = x_{j}+i y_{j}$. Which leads us to:
+$$
+s_{n} = \sum_{j=1}^{n} z_{j} = \sum_{j=1}^{n} x_{j} + i \sum_{j=1}^{n} y_{j} \equiv \sigma_{n}+i\tau_{n}
+$$
+Where we have defined the two sequences $\{ \sigma_{n} \}$ and $\{ \tau_{n} \}$.
+- Note that $\{ s_{n} \}$ converges only if both of these sequences converge
+- $s = \lim_{ n \to \infty } s_{n} = \lim_{ n \to \infty }\sigma_{n} + i \lim_{ n \to \infty }\tau_{n}$
+
+Recall a property of series:
+$$
+|s_{n}| = \left| \sum_{j=1}^{n} z_{j} \right| \leq \sum_{j=1}^{n} \left| z_{j} \right|
+$$
+- If $\sum|z_{j}|$ converges, then the series is called *absolutely convergent*, and $\sum z_{j}$ also converges
+### Geometry Series
+Recall the identity
+$$
+1+x+x^{2}+\dots+x^n = \frac{1-x^{n+1}}{1-x}
+$$
+Which is valid for any $x \in \mathbb{R}$ and $x\neq 0$
+
+If we, say, differentiation both sides with respect to $x$, multiply both sides by $x$, and add 1, then the results is
+$$
+1+x+2x^{2}+3x^{3}+\dots+nx^n = 1-(n+1) \frac{x^{n+1}}{1-x} + x \frac{1-x^{n+1}}{(1-x)^{2}}
+$$
+The same steps can be repeated again to receive an identity for the series $n^2x^n$
