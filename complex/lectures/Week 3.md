@@ -69,3 +69,5 @@ $$
 Given two functions $f$ and $g$, both continuous at the point $z_{0}$, then $f+\lambda g$ and $fg$ are also continuous.
 - If $h$ is some functions continuous at each point of some disc centred at the point $w_{0}=f(z_{0})$, then $h(f(z))$ is also continuous at $z_{0}$
 - This fact allows us to assert that all polynomials are continuous
+
+Add series notes here
