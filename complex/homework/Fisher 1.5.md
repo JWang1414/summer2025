@@ -163,3 +163,5 @@ $$
 \cos(-z) = \frac{1}{2}\left( e^{ -i(-z) } + e^{ i(-z) } \right) = \frac{1}{2} \left( e^{ iz } + e^{ -iz } \right) = \cos z
 $$
 As needed.
+### Question 15
+- Dunno how to approach this one. Ask for help
