@@ -65,7 +65,7 @@ A function $f : \mathbb{R}^n\to \mathbb{R}$ is called harmonic if:
 $$
 \frac{ \partial ^2g }{ \partial x^{2}_{1} } + \frac{ \partial^{2}g }{ \partial x_{2}^{2} } + \dots + \frac{ \partial^{2}g }{ \partial x_{n}^{2} } = 0
 $$
-Notably, the real and complex parts of a holomorphic function are harmonic. That is, if $f=u+iv$ where $f, u, v$ are functions, then $u$ and $v$ are harmonic
+Notably, the real and complex parts of a holomorphic function are always harmonic. That is, if $f=u+iv$ where $f, u, v$ are functions, then $u$ and $v$ are harmonic
 
 $u, v : \mathbb{R}^{2}\to \mathbb{R}$ are called harmonic conjugates if they satisfy the Cauchy-Riemann equations
 - Conjugates are only unique up to the addition of a constant
