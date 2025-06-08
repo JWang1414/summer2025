@@ -1,77 +1,61 @@
-### Complex Integration
-For some function $f : [a, b]\to \mathbb{C}$ be $f(t)=u(t)+iv(t)$. Then,
-$$
-\int_{a}^{b} f(t) \, dt := \int_{a}^{b} u(t) \, dt +i \int_{a}^{b} v(t) \, dt
-$$
----
-Example:
-Let $\lambda \in \mathbb{C}$, compute:
-$$
-\int_{0}^{1} (1+\lambda t)^{2} \, dt = \int_{0}^{1} 1+2\lambda t+\lambda^{2}t^{2} \, dt = 1+\lambda+\frac{\lambda^{2}}{3}
-$$
----
-A complex curve is some $\gamma : [a, b]\to \mathbb{C}$
-- It has starting point $\gamma(a)$ and ending point $\gamma(b)$
-- $\gamma$ is a curve or the image $\gamma([a, b])$ is a curve
+### Curves
+Defined as a continuous complex-valued function $\gamma(t)$ on some interval $[a, b]$ in the real axis. It begins at $\gamma(a)$ and ends at $\gamma(b)$. The reverse orientation is denoted $-\gamma$.
+- A positively-oriented circle would go counter-clockwise.
 
-INSERT DIAGRAM HERE
+Definition:
+> A curve is called *simple* if $\gamma(t_{1})\neq \gamma(t_{2})$ when $a\leq t_{1}<t_{2}<b$
 
-Note that numerous different curves can project the same image into another space. This is known as numerous curves having an identical *parameterization*
+Definition:
+> A curve is called *closed* if $\gamma(a)=\gamma(b)$
 
-INSERT DIAGRAM HERE
+Jordan Curve Theorem:
+> The complement of the range of a curve that is both simple and closed consists of two disjoint, open, connected sets. The one inside the curve is bounded, and the one outside the curve is unbounded.
+- Think of the inside and outside of a circle
 
-Let $z,w\in \mathbb{C}$, the straight line from $z$ to $w$ has parameterization
+Define some curve $\gamma(t)=x(t)+iy(t)$, where $a\leq t\leq b$ such that $x(t)$ and $y(t)$ are real-valued functions. If both functions are differentiable at $t_{0}$, then, we define the derivative to be:
+$$
+\gamma'(t_{0})=x'(t_{0})+iy'(t_{0})
+$$
+Definition:
+> If $\gamma'(t)$ exists and is continuous on $[a, b]$, then $\gamma$ is called *smooth*
+
+Definition:
+> If $\gamma$ is composed of a finite number of smooth curves, one coinciding with the beginning of the next, then it is called *piece-wise smooth*
+
+The same curve can be represented in numerous different ways. This is known as having an identical *parametrization*. For example $t$ on $[0,1]$ is the same as $2t$ on $[0, 1 /2]$.
+
+Let $z,w\in \mathbb{C}$, the straight line from $z$ to $w$ has parametrization
 $$
 \gamma(t) = (1-t)z+tw\text{, with }t\in[0,1]
 $$
-A circle is parameterized as:
+A circle is parametrized as:
 $$
 \gamma(t) = e^{ it }\text{, with }t\in[0,2\pi]
 $$
-> A curve is *simple* if for all $t\neq s$, $\gamma(t)\neq \gamma(t)$, except possibly at the endpoints
-
-> A curve is *closed* if $\gamma(a)=\gamma(b)$
-
-- I can't read this part, something about functions being smooth
-
-Let $f:\Omega \in \mathbb{C}\to \mathbb{C}$ be piece-wise continuous on a piece-wise smooth curve $\gamma(:[a, b])\to C$. Then:
+### Complex Integration
+For some function $f : [a, b]\to \mathbb{C}$ be $f(t)=u(t)+iv(t)$. Then,
 $$
-\int_{\gamma} f(z) \, dz := \int_{a}^{b} f(\gamma(t))\gamma'(t) \, dt
+\int_{a}^{b} f(t) \, dt = \int_{a}^{b} u(t) \, dt +i \int_{a}^{b} v(t) \, dt
 $$
-- Defined regardless of parameterization
-
-Properties of the line integral:
-- It is linear
-- $\int_{-\gamma}f=-\int_{\gamma}f$ if we defined $-\gamma$ as $\gamma$ with the opposite orientation
-- $\int_{\gamma}f = \sum_{i=1}^{N}\int_{\gamma_{i}}f$
-
-If no orientation is specified for a closed curve, we assume it is counterclockwise, or positive.
-
----
-Example: Let $\gamma$ be a semi-circle from 1 to -1 in the top-half of the plane. Compute
+Given a smooth curve $\gamma$, and that $u$ is continuous in the range of $\gamma$, the line integral is defined as:
 $$
-\int_{\gamma} |z|+\ln z \, dz
+\int_{\gamma} u(z) \, dz = \int_{a}^{b} u(\gamma(t))\gamma'(t) \, dt
 $$
-Parameterize $\gamma(t)=e^{ 2i\pi t }$ on $t\in[0,1 /2]$
-
-Compute $\gamma'=2\pi ie^{ 2\pi it }$
-
-Integrate:
+For a piece-wise smooth curve, we instead have
 $$
-\int_{\gamma} |z|+\ln z \, dx = \int_{0}^{1 /2} \left[ |e^{ 2\pi it } + \ln|e^{ 2\pi it }| \right] (2\pi ie^{ 2\pi it }) \, dt
+\int_{\gamma}u(z) \, dz = \sum_{j=0}^{n-1} \int_{t_{j}}^{t_{j+1}} u(\gamma(s))\gamma'(s) \, ds
 $$
-- Everything from here is computations
----
-Example: Let $\gamma$ be a straight line from $i$ to $\pi+i$. Compute
+Where the points $t_{0},t_{1},\dots,t_{n}$ are the points of discontinuity over the interval.
+### Integral Properties
+A line integral on the curve $-\gamma$ is:
 $$
-\int_{\gamma}\cos ^{2}z \, dz
+\int_{-\gamma}u(z) \, dz = -\int_{\gamma}u(z) \, dz
 $$
-Parameterize $\gamma(t)=(1-t)i+t(\pi+i) = i-it+t\pi+ti = i+t\pi$ for $t\in[0,1]$
-
-Compute $\gamma'=\pi$
-
-Integrate:
+Define two curves $\gamma_{1}$ and $\gamma_{2}$ with intervals $[a_{1}, b_{1}]$ and $[a_{2}, b_{2}]$. If $\gamma_{1}(b_{1})=\gamma_{2}(a_{2})$ then,
 $$
-\int_{\gamma}\cos ^{2}z \, dz = \pi \int_{0}^{1} \cos ^{2}(i+t\pi) \, dt = \frac{\pi}{2}
+\int_{\gamma_{1}+\gamma_{2}}u(z) \, dz = \int_{\gamma_{1}} u(z) \, dz + \int_{\gamma_{2}} u(z) \, dz
 $$
----
+For some complex-valued, continuous function $g$ on $[a, b]$:
+$$
+\left| \int_{a}^{b} g(t) \, dt  \right| \leq \int_{a}^{b} \left| g(t) \right|  \, dt 
+$$
