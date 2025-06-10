@@ -29,6 +29,71 @@ $$
 =-2k\left[ u^{2}(1, t) + \int_{0}^{1} u^{2}_{x} \, dx  \right]
 $$
 - Idk how to continue from here, or what this means
+### Question 3
+Define the new equation $v(x, t) = u(x, t)-1$.
+
+This new equation is also a solution to the diffusion equation. Furthermore, the new initial conditions are:
+$$
+\begin{align}
+v(x,0) = u(x,0)-1 = e^{ -x }-1 &  & v(0,t)=u(0,t)-1 = 1-1=0
+\end{align}
+$$
+With these new initial values, the problem has a known solution:
+$$
+v(x, t) = \int_{0}^{\infty} \left[ S(x-y, t) - S(x+y, t) \right] \phi(y) \, dy
+$$
+Where $S(x, t)$ is the source function, and $\phi(x)$ is the initial condition for $v(x, 0)$.
+$$
+\begin{align}
+v(x, t) & = \int_{0}^{\infty} \left[ S(x-y, t)-S(x+y, t) \right] (e^{ -y }-1) \, dy  \\
+ & =\int_{0}^{\infty} e^{ -y }S(x-y, t) \, dy -\int_{0}^{\infty} e^{ -y }S(x+y, t) \, dy - \int_{0}^{\infty} S(x-y, t) \, dy + \int_{0}^{\infty} S(x+y, t) \, dy 
+\end{align}
+$$
+Solving one of the integrals as an example:
+$$
+\begin{align}
+ & = \int_{0}^{\infty} e^{ -y }S(x-y, t) \, dy   \\
+ & = \frac{1}{\sqrt{ 4\pi kt }} \int_{0}^{\infty} \exp \left[ -y-\frac{(x-y)^{2}}{4kt} \right]  \, dy  \\
+ & = \frac{1}{\sqrt{ 4\pi kt }} \int_{0}^{\infty} \exp \left[ -\frac{1}{4kt}(x^{2}+(4kt-2x)y+y^{2}) \right]  \, dy 
+\end{align}
+$$
+Complete the square:
+$$
+\begin{align}
+ & = y^{2}+(4kt-2x)y+x^{2} \\
+ & = (x-2kt-y)^{2}+4(xkt-k^{2}t^{2}) \\
+ & \Rightarrow -\frac{1}{4kt}(y^{2}+(4kt-2x)y+x^{2}) \\
+ & = -\frac{(x-2kt-y)^{2}}{4kt} +kt-x
+\end{align}
+$$
+Use the substitution $p=(x-2kt-y) /\sqrt{ 4kt }$, then $dy=-\sqrt{ 4kt }dp$
+$$
+\begin{align}
+ & = \frac{1}{\sqrt{ 4\pi kt }} \int_{0}^{\infty} \exp \left[ -\frac{(x-2kt-y)^{2}}{4kt} +kt-x \right]  \, dy  \\
+ & = \frac{(-\sqrt{ 4kt })}{\sqrt{ 4\pi kt }} e^{ kt-x } \int_{0}^{\infty} e^{ -p^{2} } \, dp  \\
+ & = -\frac{1}{\sqrt{ \pi }}e^{ kt-x } \left( \frac{\sqrt{ \pi }}{2} \right) = -\frac{1}{2}e^{ kt-x }
+\end{align}
+$$
+Evaluating the other integrals, we get:
+$$
+\begin{align}
+\int_{0}^{\infty} e^{ -y }S(x+y, t) \, dy  & = \frac{1}{2}e^{ kt+x } \\
+\int_{0}^{\infty} S(x-y, t) \, dy  & = -\frac{1}{2} \\
+\int_{0}^{\infty} S(x+y, t) \, dy  & = \frac{1}{2}
+\end{align}
+$$
+Which yields the final equation:
+$$
+\begin{align}
+v(x, t)  & = -\frac{1}{2}e^{ kt-x } - \frac{1}{2}e^{ kt+x } + \frac{1}{2} + \frac{1}{2}  \\
+ & = \frac{e^{ kt }}{2}(e^{ -x }-e^{ x }) + 1 \\
+ & = -e^{ kt }\sinh x + 1
+\end{align}
+$$
+Which can be used to solve for $u(x, t)$
+$$
+v(x, t) = u(x, t) - 1 \Rightarrow u(x, t) = 2-e^{ kt }\sinh x
+$$
 ### Question 4
 Neumann problem for the wave equation on the half-line. Solutions are as follows:
 $$
