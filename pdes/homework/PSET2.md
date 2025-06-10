@@ -32,6 +32,14 @@ $$
 ### Question 3
 Define the new equation $v(x, t) = u(x, t)-1$.
 
+$$
+\begin{cases}
+v_{t}=ku_{xx},  &  & 0<x<\infty, \, t>0 \\
+v(x,0) = e^{ -x }-1,  &  & 0<x<\infty \\
+v(0,t)=0,  &  & t>0
+\end{cases}
+$$
+
 This new equation is also a solution to the diffusion equation. Furthermore, the new initial conditions are:
 $$
 \begin{align}
