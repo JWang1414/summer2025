@@ -59,3 +59,8 @@ For some complex-valued, continuous function $g$ on $[a, b]$:
 $$
 \left| \int_{a}^{b} g(t) \, dt  \right| \leq \int_{a}^{b} \left| g(t) \right|  \, dt 
 $$
+Let $p$ and $q$ be two distinct points on the plane. Suppose that $\gamma_{1}$ and $\gamma_{2}$ are two piece-wise smooth curves from $p$ to $q$. Then, $\gamma=\gamma_{1}-\gamma_{2}$ is a closed piece-wise smooth curve. For $m=0, 1, 2, \dots$
+$$
+\int_{\gamma} z^m \, dz = \int_{\gamma_{1}} z^m \, dz - \int_{\gamma_{2}} z^m \, dz = 0
+$$
+This is to say that the integral of $z^m$ along any curve joining $p$ and $q$ doesn't depend on the curve, but only on $p$, $q$, and $m$. Furthermore, we can claim that the value of an integral does not depend on our choice of parametrization.
