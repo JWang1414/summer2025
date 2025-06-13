@@ -90,7 +90,7 @@ $$
 |s_{n}| = \left| \sum_{j=1}^{n} z_{j} \right| \leq \sum_{j=1}^{n} \left| z_{j} \right|
 $$
 - If $\sum|z_{j}|$ converges, then the series is called *absolutely convergent*, and $\sum z_{j}$ also converges
-### Geometry Series
+### Geometric Series
 Recall the identity
 $$
 1+x+x^{2}+\dots+x^n = \frac{1-x^{n+1}}{1-x}

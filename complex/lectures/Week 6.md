@@ -23,3 +23,15 @@ Case 2: $n\neq 1$
 $$
 \frac{ir^{1-n}e^{ it(1-m) }}{i(1-m)} \bigg|^{2\pi}_{0} = 0
 $$
+---
+- Discussing Cauchy's integral theorem
+- Call piece-wise smooth curves contours
+- Domain $\Omega$ is called simply connected if the region inside every simple, closed contour in $\Omega$ is also inside $\Omega$
+- Discussing Cauchy's integral formula
+- A bunch of examples applying these theorems
+
+Theorem:
+> Let $f$ be analytic on the simple connected domain $\Omega$. Then all derivatives $f^{(k)}(z)$ where $k\in Z^{>0}$ exist and:
+$$
+f^{(k)}(a) = \frac{k!}{2\pi i} \int_{\gamma} \frac{f(z)}{(z-a)^{k+1}} \, dz
+$$> Where $\gamma$ is any simple, closed, contour containing $a$
