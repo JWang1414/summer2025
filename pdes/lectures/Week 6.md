@@ -153,6 +153,7 @@ Which is the Fourier cosine series we wanted. The constants are:
 $$
 A_{n} = \frac{2}{l} \int_{0}^{l} \phi(x)\cos\left( \frac{n\pi x}{l} \right) \, dx , \text{ where }n=0, 1, 2, \dots
 $$
+---
 Wave equation with homogeneous Neumann boundary conditions
 $$
 \begin{cases}
