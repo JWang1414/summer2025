@@ -49,12 +49,26 @@ Morera's Theorem:
 $$
 \int _{\gamma}f(z) \, dz =0
 $$
-> for every triangle $\gamma$ that lies, together with its interior, in $D$ then $f$ is analytic on $D$.
+> for every simple closed contour $\gamma$ lying in $D$, then $f(z)$ is analytic in $D$
 
 This theorem has numerous consequences, which will now be detailed in the following sections.
 
 Liouville's Theorem:
 > If $F$ is entire and if there is a constant $M$ such that $|F(z)|\leq M$ for all $z$, then $F$ is identically constant.
+
+Fundamental Theorem of Algebra:
+For any polynomial
+$$
+P(z) = a_{0} + a_{1}z + \dots + a_{m}z^{m}, \qquad (a_{m}\neq 0)
+$$
+Where $m\geq 1$ has at least one point $z=a$ such that $P(a)=0$. That is, $P(z)$ has at least one root
+
+Maximum Principles:
+> If $f(z)$ is analytic on domain $D$, then $|f(z)|$ cannot have a maximum in $D$ unless $f(z)$ is a constant.
+
+> If $f(z)$ is analytic in a bounded region $D$ and $|f(z)|$ is continuous in the closed region $\bar{D}$, then $|f(z)|$ assumes it maximum on the boundary of the region.
+
+Note that using a similar proof to the maximum principles, one may establish the minimum principle, stating that $f(z)$ must attain its minima on the boundary.
 ### Class notes
 Max Modulus Principle:
 > If $f$ is analytic, non-constant on domain $\Omega$ then $|f|$ has no max on $\Omega$
