@@ -74,3 +74,32 @@ $$
 - Don't know how to progress from here
 ---
 ### Question 3
+I recognize this as the homogeneous Dirichlet conditions for the wave equation. In this case:
+$$
+u(x, 0) = \phi(x) = \sin \left( \frac{2\pi x}{l} \right) \qquad u_{t}(x, 0) = \psi(x) = \sin \left( \frac{3\pi x}{l} \right)
+$$
+Recall the solutions are expressed in the form:
+$$
+u(x, t) = \sum_{n=1}^{\infty} \left( A_{n} \cos\left( \frac{n\pi ct}{l} \right) + B_{n} \sin\left( \frac{n\pi ct}{l} \right) \right) \sin\left( \frac{n\pi x}{l} \right)
+$$
+With
+$$
+\phi(x) = \sum_{n=1}^{\infty} A_{n} \sin\left( \frac{n\pi x}{l} \right)
+$$
+$$
+\psi(x) = \sum_{n=0}^{\infty} \frac{n\pi c}{l} B_{n} \sin\left( \frac{n\pi x}{l} \right)
+$$
+Substituting in the given conditions:
+$$
+\phi(x) = \sin\left( \frac{2\pi x}{l} \right) = \sum_{n=0}^{\infty} A_{n} \sin\left( \frac{n\pi x}{l} \right) \implies A_{2}=1
+$$
+$$
+\psi(x) = \sin\left( \frac{3\pi x}{l} \right) = \sum_{n=0}^{\infty} \frac{n\pi c}{l} B_{n} \sin\left( \frac{n\pi x}{l} \right) \implies \frac{3\pi c}{l}B_{3} =1 \implies B_{3} = \frac{l}{3\pi c}
+$$
+All other coefficients $A_{n}=B_{n}=0$. Hence, the full solution can be written as:
+$$
+u(x, t) = \cos\left( \frac{2\pi ct}{l} \right) \sin\left( \frac{2\pi x}{l} \right) + \frac{l}{3\pi c} \sin\left( \frac{3\pi ct}{l} \right) \sin\left( \frac{3\pi x}{l} \right)
+$$
+### Question 4
+---
+a.
