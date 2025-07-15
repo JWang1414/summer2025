@@ -104,6 +104,19 @@ $$
 H(z) = \sum_{k=0}^{\infty} c_{k}(z-z_{0})^{k}
 $$
 Where $c_{k}$ has been taken from the function $f(z)$ it is representing.
+### Applications of Residue Theorem
+The Residue Theorem:
+Suppose that $f$ is analytic on a simply-connected domain $D$ except for a finite number of isolated singularities at points $z_{1}, \dots, z_{N}$ of $D$. Let $\gamma$ be a piecewise smooth positively oriented simple closed curve in $D$ that does not pass through any of the point $z_{1}, \dots, z_{N}$. Then
+$$
+\int _{\gamma}f(z) \, dz = 2\pi i \sum_{z_{k}\text{ inside }\gamma} \text{Res}(f;z_{k})
+$$
+Where the sum is taken over all the singularities $z_{k}$ of $f$ that lie inside $\gamma$
+
+Suppose $P$ and $Q$ are polynomials that are real-values on the real axis and for which the degree of $Q$ exceeds the degree of $P$ by 2 or more. If $Q(x)\neq 0$ for all real $x$ then:
+$$
+\int_{-\infty}^{\infty} \frac{P(x)}{Q(x)} \, dx = 2\pi i \sum_{U} \text{Res}\left( \frac{P}{Q};z_{j} \right)
+$$
+Where the sum is taken over all the poles of $P /Q$ that lie in the upper half-plane $U=\{ z:\mathrm{Im}(z)>0 \}$
 ### Class Notes
 Laurent Series
 > If $f$ is analytic on an annulus $r<|z-z_{0}|<R$ where $r\geq 0$ around $z_{0}$. Then,
@@ -164,17 +177,3 @@ $$
 $$
 - That is, the residue around all these small individual points will sum up to the residue around the entire domain
 - Very useful for computing integrals with discontinuities
-
-### Applications of Residue Theorem
-The Residue Theorem:
-Suppose that $f$ is analytic on a simply-connected domain $D$ except for a finite number of isolated singularities at points $z_{1}, \dots, z_{N}$ of $D$. Let $\gamma$ be a piecewise smooth positively oriented simple closed curve in $D$ that does not pass through any of the point $z_{1}, \dots, z_{N}$. Then
-$$
-\int _{\gamma}f(z) \, dz = 2\pi i \sum_{z_{k}\text{ inside }\gamma} \text{Res}(f;z_{k})
-$$
-Where the sum is taken over all the singularities $z_{k}$ of $f$ that lie inside $\gamma$
-
-Suppose $P$ and $Q$ are polynomials that are real-values on the real axis and for which the degree of $Q$ exceeds the degree of $P$ by 2 or more. If $Q(x)\neq 0$ for all real $x$ then:
-$$
-\int_{-\infty}^{\infty} \frac{P(x)}{Q(x)} \, dx = 2\pi i \sum_{U} \text{Res}\left( \frac{P}{Q};z_{j} \right)
-$$
-Where the sum is taken over all the poles of $P /Q$ that lie in the upper half-plane $U=\{ z:\mathrm{Im}(z)>0 \}$
