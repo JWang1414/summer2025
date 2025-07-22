@@ -62,10 +62,81 @@ Pretty sure this is just the wave equation on the half-line with Neumann conditi
 However, the question is worded a little strangely and so I don't know if this is what I'm supposed to do
 
 The rest of this question looks pretty straight forward
+
+---
+c.
+Going back to the definition of $v$
+$$
+v(r, t) = ru(r, t)
+$$
+Solve for the initial conditions:
+$$
+v(r, 0) = ru(r, 0) = rf(r)
+$$
+$$
+v_{t}(r, t) = ru_{t}(r, t) \implies v_{t}(r, 0) = ru_{t}(r, 0) = rg(r)
+$$
+---
+d.
+Because this is a spherically symmetric problem, $v(0, t)$ must be finite, and $v_{r}(0, t)=0$. That is, $v$ must be an even function.
+
+This is the wave equation on the half-line with Neumann conditions. Which has the general solution:
+$$
+v(r, t)= \begin{cases}
+\frac{1}{2}\left[ \phi(r+ct)+\phi(r-ct) \right] +\frac{1}{2c}\int_{r-ct}^{r+ct} \psi(y) \, dy  &  & r>ct \\
+\frac{1}{2}\left[ \phi(r+ct)+\phi(ct-r) \right] + \frac{1}{2c}\int_{0}^{ct-r} \psi(y) \, dy +\frac{1}{2c}\int_{0}^{r+ct} \psi(y) \, dy  &  & 0<r<ct
+\end{cases}
+$$
+Where:
+$$
+\begin{align}
+v(r, 0) = \phi(r) = rf(r) &  & v_{t}(r, 0) = \psi(r) = rg(r)
+\end{align}
+$$
+Solve for the parts of this equation:
+$$
+\phi(r+ct) + \phi(r-ct) = (r+ct)f(r+ct) + (r-ct)f(r-ct)
+$$
+$$
+\phi(r+ct) + \phi(ct-r) = (r+ct)f(r+ct) + (ct-r)f(ct-r)
+$$
+$$
+\int_{r-ct}^{r+ct} \psi(y) \, dy = \int_{r-ct}^{r+ct} yg(y) \, dy =
+$$
+- The complexity of these computations has made me question if this is the correct thing to do
 ### Question 3
-
-
-
+In spherical coordinates, the Laplacian becomes:
+$$
+\Delta = \frac{1}{r^{2}} \frac{ \partial  }{ \partial r } \left( r^{2} \frac{ \partial  }{ \partial r } \right) + \frac{1}{r^{2} \sin \theta} \frac{ \partial  }{ \partial \theta } \left( \sin \theta \frac{ \partial  }{ \partial \theta }  \right) + \frac{1}{r^{2} \sin ^{2}\theta} \frac{ \partial^{2} }{ \partial \phi^{2} }
+$$
+Assuming the solution depends only on $r$, this simplifies into:
+$$
+\Delta = \frac{1}{r^{2}} \frac{ \partial  }{ \partial r } \left( r^{2} \frac{ \partial  }{ \partial r }  \right) = \frac{ \partial^{2} }{ \partial r^{2} }  + \frac{2}{r} \frac{ \partial  }{ \partial r }
+$$
+Based on the solution function $u$ define the new function $v=u_{r}$. The above has become an ODE:
+$$
+u_{xx} + u_{yy} + u_{zz} = \Delta u = u_{rr} + \frac{2}{r}u_{r} = v_{r} + \frac{2}{r} v =1
+$$
+Which has the solution:
+$$
+v(r) = \frac{A}{r^{2}} + \frac{1}{3}r \implies u(r) = \int \frac{A}{r^{2}} + \frac{r}{3} \, dr = C-\frac{A}{r} + \frac{r^{2}}{6}
+$$
+Where $C$ is the integration constant. Apply the boundary conditions:
+$$
+\begin{cases}
+u(a) = C - \frac{A}{a} + \frac{a^{2}}{6} = 0 \\
+u(b) = C - \frac{A}{b} + \frac{b^{2}}{6} =0
+\end{cases}
+$$
+Solve for $A$:
+$$
+-\frac{A}{a} + \frac{a^{2}}{6} = -\frac{A}{b} + \frac{b^{2}}{6} \implies A\left( \frac{1}{b} - \frac{1}{a} \right) = \frac{1}{6} (b^{2}-a^{2}) \implies A = -\frac{1}{6} ab(a+b)
+$$
+And therefore the solution is:
+$$
+u(r) = C + \frac{1}{6} \frac{ab}{r} (a+b) + \frac{r^{2}}{6}
+$$
+Where $C$ is some constant and $r=\sqrt{ x^{2}+y^{2}+z^{2} }$.
 ### Question 4
 ---
 a.
@@ -148,17 +219,25 @@ From the boundary conditions:
 $$
 X(0) = A \cosh(0) + B \sinh(0) = A =0
 $$
-$$
-X(a) = B \sinh(\gamma_{n}a) = f(y) \implies B = \frac{\sinh(\gamma_{n}a)}{f(y)}
-$$
 Resulting in the corresponding eigenfunction:
 $$
-X_{n}(x) = \frac{1}{f(y)} \sinh\left( \frac{n\pi a}{b} \right) \sinh\left( \frac{n\pi x}{b} \right)
+X_{n}(x) = \sinh\left( \frac{n\pi x}{b} \right)
 $$
 ---
 c.
 $$
-u(x, y) = \sum_{n=1}^{\infty} \frac{A_{n}}{f(y)} \sinh\left( \frac{n\pi a}{b} \right) \sinh\left( \frac{n\pi x}{b} \right) \sin\left( \frac{n\pi y}{b} \right)
+u(x, y) = \sum_{n=1}^{\infty} A_{n} \sinh\left( \frac{n\pi x}{b} \right) \sin\left( \frac{n\pi y}{b} \right)
 $$
 ---
 d.
+Applying the final boundary condition:
+$$
+u(a, y) = f(y) = \sum_{n=1}^{\infty} A_{n} \sinh\left( \frac{n\pi a}{b} \right)\sin\left( \frac{n\pi y}{b} \right)
+$$
+Which reduces the series expansion into a Fourier sine series. This has the coefficients:
+$$
+\begin{align}
+A_{n} \sinh\left( \frac{n\pi a}{b} \right) & = \frac{2}{b} \int_{0}^{b} f(y)\sin\left( \frac{n\pi y}{b} \right) \, dy \\
+A_{n} & = \frac{2}{b} \sinh ^{-1}\left( \frac{n\pi a}{b} \right) \int_{0}^{b} f(y) \sin\left( \frac{n\pi y}{b} \right) \, dy 
+\end{align}
+$$
