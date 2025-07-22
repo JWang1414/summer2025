@@ -44,3 +44,4 @@ Which is equal to:
 $$
 u(\vec{0}) = 1
 $$
+---
