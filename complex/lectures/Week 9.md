@@ -1,3 +1,51 @@
+### Evaluating Integrals
+For integrals of the form:
+$$
+\int_{-\infty}^{\infty} \frac{N(x)}{D(x)} \, dx
+$$
+Where $D(x)\neq 0$ for $x \in \mathbb{R}$ and $D(x)$ is at least 2 degrees greater than the degree of $N(x)$, we consider the integral:
+$$
+\oint_{C} f(z) \, dz = \int_{-R}^{R} f(x) \, dx + \int _{C_{R}} f(z) \, dz
+$$
+$C$ is a contour which encloses all the singularities of $f(z)$, and $C_{R}$ is a large semicircle. Showing that $\lim_{ R \to \infty }\int _{C_{R}} f(z) \, dz=0$ the following integral can be evaluated with:
+$$
+\int_{-\infty}^{\infty} f(x) \, dx = 2\pi i \sum_{i=1}^{N} \text{Res}(f(z), z_{i})
+$$
+Further more, it is possible to prove as a theorem that:
+> For some rational function $f(z)=N(z) /D(z)$ such that the degree of $D(z)$ exceeds the degree of $N(z)$ by at least two, then
+$$
+\lim_{ R \to \infty } \int C_{R} f(z) \, dz =0
+$$
+![[Pasted image 20250722111930.png]]
+
+Jordan's Lemma:
+> Suppose that on the circular arc $C_{R}$, we have $f(z)\to 0$ uniformly as $R\to \infty$. Then
+$$
+\lim_{ R \to \infty } \int _{C_{R}} e^{ ikz } f(z) \, dz =0
+$$
+> When $k>0$. 
+
+For integrals of the form:
+$$
+\int_{-\infty}^{\infty} R(x) \sin x \, dx \qquad \int_{-\infty}^{\infty} R(x) \cos x \, dx
+$$
+Where $R$ is a rational function, real-valued on the real axis, we can use the Residue theorem on the function $f(z)=R(z)e^{ iz }$ and then use the imaginary of real part of the resulting value. Under this transformation we have:
+$$
+\cos t = \frac{1}{2} \left( z+\frac{1}{z} \right) \qquad \sin t = \frac{1}{2i} \left( z-\frac{1}{z} \right)
+$$
+![[Pasted image 20250722113015.png]]
+Theorem:
+> Suppose that on the contour $C_{\epsilon}$ depicted above we have $(z-z_{0})f(z)\to 0$ uniformly as $\epsilon\to 0$. Then
+$$
+\lim_{ \epsilon \to 0 } \int _{C_{\epsilon}}f(z) \, dz =0
+$$
+> Suppose $f(z)$ has a simple pole at $z=z_{0}$ with residue $\text{Res}(f(z);z_{0})=C_{-1}$. Then, for the contour $C_{\epsilon}$
+$$
+\lim_{ \epsilon \to 0 } \int _{C_{\epsilon}} f(z) \, dz = i \phi C_{-1}
+$$
+
+Generally speaking, when attempting to evaluate integrals on the real line, we are interested in drawing contours of integration like this:
+![[Pasted image 20250722113403.png]]
 ### Class notes
 Computing definite integrals with residue theorem.
 
