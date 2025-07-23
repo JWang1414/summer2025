@@ -34,76 +34,6 @@ Matching the coefficients, I find that $d_{0}=1$ and $d_{2}=1 /4c$. All other va
 $$
 u(x, t) = \frac{1}{2}t + \frac{1}{4c} \sin(2ct) \cos(2x)
 $$
-### Question 2
----
-a.
-Begin by computing $u_{tt}$, $u_{r}$, and $u_{rr}$
-$$
-u_{tt} = \frac{ \partial^{2} }{ \partial t^{2} } \frac{v}{r} = \frac{1}{r} v_{tt}
-$$
-$$
-u_{r} = \frac{ \partial  }{ \partial r } \frac{v}{r} = \frac{v_{r}}{r} - \frac{v}{r^{2}}
-$$
-$$
-u_{rr} = \frac{ \partial  }{ \partial r } \frac{v_{r}}{r} - \frac{ \partial  }{ \partial r } \frac{v}{r^{2}} = \frac{v_{rr}}{r} - \frac{v_{r}}{r^{2}} - \left[ \frac{v_{r}}{r^{2}} - \frac{2v}{r^{3}} \right] = \frac{v_{rr}}{r} -\frac{2v_{r}}{r^{2}} + \frac{2v}{r^{3}}
-$$
-Substituting back into the original equation:
-$$
-\frac{v_{tt}}{r} = u_{tt} = c^{2} \left( u_{rr} + \frac{2}{r} u_{r} \right) = c^{2} \left[ \left( \frac{v_{rr}}{r} -\frac{2v_{r}}{r^{2}} + \frac{2v}{r^{3}} \right) + \frac{2}{r} \left( \frac{v_{r}}{r} - \frac{v}{r^{2}} \right)  \right] = c^{2} \left( \frac{v_{rr}}{r} \right)
-$$
-Which yields the final equation:
-$$
-\frac{v_{tt}}{r} = \frac{c^{2}}{r} v_{rr} \implies v_{tt} - c^{2} v_{rr} =0
-$$
----
-b.
-Pretty sure this is just the wave equation on the half-line with Neumann conditions. Since $v(r=0)$ must be finite and $v_{r}(r=0)$ must be zero in order for it to be symmetric around $r=0$.
-
-However, the question is worded a little strangely and so I don't know if this is what I'm supposed to do
-
-The rest of this question looks pretty straight forward
-
----
-c.
-Going back to the definition of $v$
-$$
-v(r, t) = ru(r, t)
-$$
-Solve for the initial conditions:
-$$
-v(r, 0) = ru(r, 0) = rf(r)
-$$
-$$
-v_{t}(r, t) = ru_{t}(r, t) \implies v_{t}(r, 0) = ru_{t}(r, 0) = rg(r)
-$$
----
-d.
-Because this is a spherically symmetric problem, $v(0, t)$ must be finite, and $v_{r}(0, t)=0$. That is, $v$ must be an even function.
-
-This is the wave equation on the half-line with Neumann conditions. Which has the general solution:
-$$
-v(r, t)= \begin{cases}
-\frac{1}{2}\left[ \phi(r+ct)+\phi(r-ct) \right] +\frac{1}{2c}\int_{r-ct}^{r+ct} \psi(y) \, dy  &  & r>ct \\
-\frac{1}{2}\left[ \phi(r+ct)+\phi(ct-r) \right] + \frac{1}{2c}\int_{0}^{ct-r} \psi(y) \, dy +\frac{1}{2c}\int_{0}^{r+ct} \psi(y) \, dy  &  & 0<r<ct
-\end{cases}
-$$
-Where:
-$$
-\begin{align}
-v(r, 0) = \phi(r) = rf(r) &  & v_{t}(r, 0) = \psi(r) = rg(r)
-\end{align}
-$$
-Solve for the parts of this equation:
-$$
-\phi(r+ct) + \phi(r-ct) = (r+ct)f(r+ct) + (r-ct)f(r-ct)
-$$
-$$
-\phi(r+ct) + \phi(ct-r) = (r+ct)f(r+ct) + (ct-r)f(ct-r)
-$$
-$$
-\int_{r-ct}^{r+ct} \psi(y) \, dy = \int_{r-ct}^{r+ct} yg(y) \, dy =
-$$
-- The complexity of these computations has made me question if this is the correct thing to do
 ### Question 3
 In spherical coordinates, the Laplacian becomes:
 $$
@@ -128,15 +58,25 @@ u(a) = C - \frac{A}{a} + \frac{a^{2}}{6} = 0 \\
 u(b) = C - \frac{A}{b} + \frac{b^{2}}{6} =0
 \end{cases}
 $$
-Solve for $A$:
+Solve for $A$ by equating these two equations:
 $$
 -\frac{A}{a} + \frac{a^{2}}{6} = -\frac{A}{b} + \frac{b^{2}}{6} \implies A\left( \frac{1}{b} - \frac{1}{a} \right) = \frac{1}{6} (b^{2}-a^{2}) \implies A = -\frac{1}{6} ab(a+b)
 $$
+The new boundary conditions are:
+$$
+\begin{cases}
+u(a) = C + \frac{1}{6}b(a+b) + \frac{a^{2}}{6} =0 \\
+u(b) = C + \frac{1}{6}a(a+b) + \frac{b^{2}}{6} =0
+\end{cases}
+$$
+Solve for $C$ by adding these two equations together:
+$$
+2C + \frac{1}{6}b(a+b) + \frac{1}{6}a(a+b) + \frac{a^{2}}{6} + \frac{b^{2}}{6} =0 \implies C = \frac{1}{6}(a^{2}+ab+b^{2})
+$$
 And therefore the solution is:
 $$
-u(r) = C + \frac{1}{6} \frac{ab}{r} (a+b) + \frac{r^{2}}{6}
+u(r) = C - \frac{A}{r} + \frac{r^{2}}{6} = \frac{1}{6}(a^{2}+ab+b^{2}+r^{2}) + \frac{1}{6r}(a^{2}b + ab^{2})
 $$
-Where $C$ is some constant and $r=\sqrt{ x^{2}+y^{2}+z^{2} }$.
 ### Question 4
 ---
 a.
@@ -225,6 +165,7 @@ X_{n}(x) = \sinh\left( \frac{n\pi x}{b} \right)
 $$
 ---
 c.
+Combining the $X_{n}(x)$ and $Y_{n}(y)$ terms into a summation results in:
 $$
 u(x, y) = \sum_{n=1}^{\infty} A_{n} \sinh\left( \frac{n\pi x}{b} \right) \sin\left( \frac{n\pi y}{b} \right)
 $$
