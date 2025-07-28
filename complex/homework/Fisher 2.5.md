@@ -136,33 +136,37 @@ $$
 - This is the -1th term of my series, but I think because the power in the denominator is 2, this might actually be incorrect. The term with the -1th power is equal to 0, so maybe the residue is zero.
 ---
 11.
-The goal is first to expand $az+b$ in terms of $cz+d$ centred at $z=-d /c$. Take derivatives:
+First, expand $az+b$ in terms of powers of $cz+d$. Recall the coefficients follow the structure:
+$$
+a_{n} = \frac{f^{(n)}(z_{0})}{n!}
+$$
+Begin by taking derivatives:
 $$
 \begin{align}
+f & = az+b \\
 f' & = a \\
 f'' & = 0
 \end{align}
 $$
-The coefficients are:
+Therefore the coefficients are:
 $$
-\frac{f^{(n)}(z_{0})}{n!} = a_{n}
+\begin{align}
+a_{0} & = \frac{az_{0}+b}{0!} = a\left( -\frac{d}{c} \right)+b = b - \frac{ad}{c} \\
+a_{1} & = \frac{a}{1!} = a \\
+a_{2} & = 0
+\end{align}
 $$
-Which in this case are:
+Which yields the series representation:
 $$
-\frac{f(z_{0})}{0!} = a\left( -\frac{d}{c} \right)+b = -\frac{ad}{c}+b \qquad \frac{f'(z_{0})}{1!} = a \qquad \frac{f''(z_{0})}{2!} = 0
+az+b = \left( b-\frac{ad}{c} \right) + a(cz+d)
 $$
-So the series is:
+Substituting into the original function:
 $$
-\left( b-\frac{ad}{c} \right)(cz+d)^{0} + a(cz+d)^{1} + 0(cz+d)^{2} = \left( b-\frac{ad}{c} \right) + a(cz+d)
+\frac{az+b}{cz+d} = \frac{1}{cz+d} \left[ \left( b-\frac{ad}{c} \right) + a(cz+d) \right] = \frac{1}{cz+d}\left( b - \frac{ad}{c} \right) + a
 $$
-- I have no idea how to do this?
-I'll solve for the residue using the typical formula:
+This is the Laurent series for this function. Furthermore, the residue is:
 $$
-\text{Res}(f;z_{0}) = \frac{H^{(m-1)}(z_{0})}{(m-1)!}
-$$
-Where $m$ is the order of the pole. Which is, in this case, 1. And so the residue is:
-$$
-H(z_{0}) = a\left( -\frac{d}{c} \right)+b = b-\frac{ad}{c}
+b-\frac{ad}{c}
 $$
 ---
 13.
