@@ -90,7 +90,7 @@ u(r, \theta) = \sum_{n=1}^{\infty} A_{n} r^{n\pi/\beta} \sin\left( \frac{n\pi \t
 $$
 Use the inhomogeneous boundary condition to find:
 $$
-\sum_{n=1}^{\infty} A_{n} \left( \frac{n\pi}{\beta} \right) a^{(n\pi/\beta) -1} \sin\left( \frac{n\pi \theta}{\beta} \right) =h(\theta)
+\sum_{n=0}^{\infty} A_{n} \left( \frac{n\pi}{\beta} \right) a^{(n\pi/\beta) -1} \sin\left( \frac{n\pi \theta}{\beta} \right) =h(\theta)
 $$
 Which is now a Fourier sin series on the interval $[0, \beta]$. Solving for the coefficients, we have:
 $$
