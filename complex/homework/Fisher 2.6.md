@@ -130,3 +130,56 @@ $$
 - I don't feel like proving the other part of the integral vanishes
 ---
 8.
+Use the new function:
+$$
+\frac{e^{ i \gamma x }}{(x^{2}+\alpha^{2})(x^{2}+\beta^{2})} = \frac{e^{ i\gamma x }}{(x\pm i\alpha)(x\pm i\beta)}
+$$
+The original function is just the real part of this one.
+$$
+\text{Res}(f;i\alpha) = H(i\alpha) = \frac{e^{ i\gamma(i\alpha) }}{(i\alpha+i\alpha)(i\alpha\pm i\beta)} = \frac{ie^{ -\gamma \alpha }}{2\alpha^{3} - 2\alpha \beta^{2}}
+$$
+$$
+\text{Res}(f;i\beta) = H(i\beta) = \frac{e^{ i\gamma(i\beta) }}{(i\beta+i\beta)(i\beta\pm i\alpha)} = -\frac{ie^{ -\gamma \beta }}{2\alpha^{2}\beta - 2\beta^{3}}
+$$
+By residue theorem:
+$$
+2\pi i \left[ \text{Res}(f;i\alpha) + \text{Res}(f;i\beta) \right] = - \frac{\pi}{\alpha \beta(\alpha^{2}-\beta^{2})} (\beta e^{ -\gamma \alpha } - \alpha e^{ -\gamma \beta })
+$$
+Which is the integral over the top half plane along the interval $-\infty$ to $\infty$. From 0 to $\infty$. We have:
+$$
+\int_{0}^{\infty} \frac{\cos \gamma x}{(x^{2}+\alpha^{2})(x^{2}+\beta^{2})} \, dx = \frac{\pi}{2\alpha \beta (\alpha^{2}-\beta^{2})} (\alpha e^{ i\gamma \beta } - \beta e^{ i\gamma \alpha })
+$$
+- WHICH IS CORRECT HOLY FUCK
+### Questions 9-12
+---
+9.
+Recall that:
+$$
+\sin \theta = \frac{1}{2i} \left( z-\frac{1}{z} \right)
+$$
+Re-write the original function:
+$$
+\frac{1}{(2-\sin \theta)^{2}} = \frac{1}{\left( 2-\frac{1}{2i}\left( z-\frac{1}{z} \right) \right)^{2}} = - \frac{4z^{2}}{(z^{2}-4iz-1)^{2}}
+$$
+Which has the roots:
+$$
+z^{2}-4iz-1 = (-iz+\sqrt{ 3 }-2)(iz+\sqrt{ 3 }+2)
+$$
+Both of which have order 2 because they are squared. Calculate residuals:
+$$
+\text{Res}(f;i(2-\sqrt{ 3 })) = \frac{d}{dz} H(i(2-\sqrt{ 3 })) = -\frac{i}{3} (2-\sqrt{ 3 })(2+3\sqrt{ 3 })
+$$
+$$
+\text{Res}(f;i(\sqrt{ 3 }+2)) = \frac{d}{dz} H(i(\sqrt{ 3 }+2)) = \frac{i}{3} (2-3\sqrt{ 3 }) (2+\sqrt{ 3 })
+$$
+By residue theorem:
+$$
+2\pi i \left[ \text{Res}(f;i(2-\sqrt{ 3 })) + \text{Res}(f;i(2+\sqrt{ 3 })) \right] = \frac{16\pi}{\sqrt{ 3 }}
+$$
+Which is entirely real. We need to take the imaginary part of this for the sine, therefore:
+$$
+\int_{0}^{2\pi} \frac{1}{(2-\sin \theta)^{2}} \, d\theta = \mathrm{Im}\left( \frac{16\pi}{\sqrt{ 3 }} \right) = 0
+$$
+- I think I made a mistake with the domain here. The domain is supposed to be the unit circle. $2+\sqrt{ 3 }$ is far greater than 1, so it should have been excluded from the residue calculation.
+- I'm way too lazy to go back now though.
+---
