@@ -1,123 +1,225 @@
-### Definition of the Fourier Transform & Fundamental Properties
-For the Fourier transform to work, we require that $f(x)$ is integrable on $\mathbb{R}$
+### Convolution of Functions
+An important form of multiplication of functions is called convolution. If $f$, $g$ are functions over $\mathbb{R}$, then the convolution $f*g$ is a new function defined over $\mathbb{R}$ given by
 $$
-\int_{-\infty}^{\infty} \left| f(x) \right|  \, dx <\infty
+(f*g)(x):= \int_{-\infty}^{\infty} f(x-y)g(y) \, dy
 $$
-> For each $k\in \mathbb{R}$, we define the Fourier transform of the function $f$ at $k$ to be
+Recall that the solution to the diffusion equal on $\mathbb{R}$ looked something like:
 $$
-\hat{f}(k) = \int_{-\infty}^{\infty} f(x)e^{ -ikx } \, dx
+u(x, t) = \frac{1}{\sqrt{ 4\pi kt }} \int_{-\infty}^{\infty} e^{ -(x-y)^{2}/4kt } \phi(y) \, dy
 $$
-> Where the transform is notated with the "hat"
+Define the new function:
+$$
+S(x, t) = \frac{1}{\sqrt{ 4\pi kt }} = e^{ -x^{2}/4kt }
+$$
+And so the solution can also be represented as:
+$$
+u(x, t) = \int_{-\infty}^{\infty} S(x-y)\phi(y) \, dy = S*\phi
+$$
 
-The Fourier transform (FT) has transformed the function of $x$ into Fourier space ($k$-space) as opposed to the original space where $x$ lives.
+Convolution is commutative. Let $z=x-y$, then we have:
 $$
-\mathcal{F}\{ f \} = \hat{f} \qquad \mathcal{F}\{ f(x) \}(k) = \hat{f}(k)
+(f*g)(x) = \int_{-\infty}^{\infty} f(x-y)g(y) \, dy = \int_{-\infty}^{\infty} f(z)g(x-z) \, dx = (g*f)(x)
 $$
-The FT is related to the original function in a convoluted and non-local way $\to$ to find $\hat{f}$ at any point $k$, we need to incorporate (integrate) the values of the original function everywhere.
-
-In general, $\hat{f}(k)$ is also complex. However, FT of several important function has no imaginary part.
-
-FT is bounded. For all $k\in \mathbb{R}$,
+Differentiation:
 $$
-\left| \hat{f}(k) \right|  \leq \int_{-\infty}^{\infty} \left| f(x) \right| \left| e^{ -ikx } \right|  \, dx = \int_{-\infty}^{\infty} \left| f(x) \right|  \, dx < \infty
+\begin{align}
+(f*g)'(x) & = \frac{d}{dx} \int_{-\infty}^{\infty} f(x-y)g(y) \, dy  \\
+ & = \int_{-\infty}^{\infty} f'(x-y)g(y) \, dy
+\end{align}
 $$
-FT is a linear operation on functions. If $f_{1}$ and $f_{2}$ are integrable, then:
+By the commutative property we also have:
 $$
-(a f_{1} + b f_{2}) (k) = a \hat{f}_{1}(k) + b \hat{f}_{2} (k)
+(g*f)'(x) = \int_{-\infty}^{\infty} g'(x-y)f(y) \, dy
 $$
+And so the derivative is:
+$$
+(f*g)'(x) = (f'*g)(x) = (f*g')(x)
+$$
+Now, what about the Fourier transform?
+$$
+\begin{align}
+\hat{(f*g)}(x) & = \int_{-\infty}^{\infty} (f*g)(x)e^{ -ikx } \, dx  \\
+ & = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x-y)e^{ ik(x-y) }g(y)e^{ -iky } \, dy  \, dx  \\
+ & = \int_{-\infty}^{\infty} \left( \int_{-\infty}^{\infty} f(x-y)e^{ -ik(x-y) } \, dx  \right)g(y)e^{ -iky } \, dy
+\end{align}
+$$
+Let $z=x-y$
+$$
+\begin{align}
+= & \int_{-\infty}^{\infty} \left( \int_{-\infty}^{\infty} f(z)e^{ -ikz } \, dz  \right)g(y)e^{ -iky } \, dy  \\
+= & \left( \int_{-\infty}^{\infty} f(z)e^{ -ikz } \, dz  \right)\left( \int_{-\infty}^{\infty} g(y)e^{ -iky } \, dy  \right)
+\end{align}
+$$
+Which is the just the Fourier transform of two functions. Therefore, we have:
+$$
+\hat{(f*g)}(k)= \hat{f}(k)\hat{g}(k)
+$$
+And the inverse FT is as expected:
+$$
+\mathcal{F}^{-1}\{ \hat{f}(k)\hat{g}(k) \}= (f*g)(x)
+$$
+### Various Properties of the FT
+Translation property of the FT:
+$$
+\hat{f(x-a)} = e^{ -iak }\hat{f}(k)
+$$
+That is:
+$$
+\begin{align}
+\mathcal{F}\{ f(x-a) \} & = \int_{-\infty}^{\infty} f(x-a)e^{ -ikx } \, dx  \\
+ & = e^{ -ika } \int_{-\infty}^{\infty} f(z)e^{ -ikz } \, dz = e^{ -ika } \hat{f}(k)
+\end{align}
+$$
+And, furthermore, as you would expect:
+$$
+\mathcal{F}\{ e^{ iax }f(x) \} = \hat{f}(k-a)
+$$
+Scaling property:
+$$
+\hat{f(ax)} = \frac{1}{|a|} \hat{f}\left( \frac{k}{a} \right) \text{ where }a\neq  0
+$$
+Case $a>0$
+$$
+\begin{align}
+\mathcal{F}\{ f(ax) \} & = \int_{-\infty}^{\infty} f(ax)e^{ -ikx } \, dx  \\
+ & = \frac{1}{a} \int_{-\infty}^{\infty} f(z)e^{ -ikz/a } \, dz  \\
+ & = \frac{1}{a} \hat{f}\left( \frac{k}{a} \right)
+\end{align}
+$$
+Case $a<0$
+$$
+\begin{align}
+\mathcal{F}\{ f(ax) \} & = \int_{-\infty}^{\infty} f(ax)e^{ -ikx } \, dx  \\
+ & = \frac{1}{a} \int_{\infty}^{-\infty} f(z)e^{ -ikz/a } \, dz  \\
+ & = -\frac{1}{a} \hat{f}\left( \frac{k}{a} \right)
+\end{align}
+$$
+Multiplication by a polynomial:
+$$
+\hat{xf(x)} = i \frac{d\hat{f}(k)}{dk}
+$$
+Proof:
+$$
+\begin{align}
+\mathcal{F}\{ xf(x) \} & = \int_{-\infty}^{\infty} xf(x) e^{ -ikx } \, dx  \\
+ & = \int_{-\infty}^{\infty} xf(x) \frac{d}{dk}\left( \frac{e^{ -ikx }}{-ix} \right) \, dx  \\
+ & = i \int_{-\infty}^{\infty} f(x) \frac{d}{dk} e^{ -ikx } \, dx  \\
+  & = i \frac{d}{dk} \int_{-\infty}^{\infty} f(x) e^{ -ikx } \, dx  \\
+ & = i \frac{d\hat{f}(k)}{dk}
+\end{align}
+$$
+### Invariance of the Gaussian
+Gaussian functions
+$$
+e^{ -x^{2}/2 }
+$$
+are special under the FT because the FT of a Gaussian is once again a Gaussian. That is:
+$$
+f(x) = e^{ -x^{2}/2 } \Rightarrow \hat{f}(k) = \sqrt{ 2\pi } e^{ -k^{2}/2 }
+$$
+### FT to Solve Linear PDEs
+Consider linear PDEs with space $x$, time $t$ an data with $t=0$.
+1. FT both sides of the PDE in the space variable and FT the data at $t=0$
+2. In the transformed variable, the differentiation is now algebraic
+	- For each $k$, we get an ODE for $\hat{u}(k,t)$
+3. Solve the ODE initial value problem for $\hat{u}(k,t)$
+4. Take the inverse FT in the spatial variable in obtain $u(x, t)$
 
 ---
 Example:
-Let $a>0$ and consider:
+Let $f(x)$ be integrable over $\mathbb{R}$, find the solution $y(x)$ to the ODE $y''-y=f$
+
+Take FT in the variable $x$ on both sides of the ODE
 $$
-f(x) = \begin{cases}
-1 & |x|<a \\
-0 & |x|\geq a
+\begin{align}
+\hat{y''}(k) - \hat{y}(k) & =\hat{f}(k) \\
+ (ik)^{2} \hat{y}(k) - \hat{y}(k) & = \hat{f}(k) \\
+-(1+k^{2})\hat{y}(k) & = \hat{f}(k) \\
+\hat{y}(k) & = -\frac{\hat{f}(k)}{1+k^{2}}
+\end{align}
+$$
+Take the inverse FT of both sides
+$$
+y(x) = \mathcal{F}^{-1}\left\{ - \left[ \hat{f}(k) \cdot \frac{1}{1+k^{2}} \right] (x) \right\}
+$$
+If we use the function $\hat{g}(k)=\frac{1}{1+k^{2}}$ then we have:
+$$
+y(x) = \mathcal{F}^{-1}\left\{ -(\hat{f}(k)\cdot \hat{g}(k))(x) \right\} = -(f*g)(x)
+$$
+The inverse Fourier transform of $g(k)$ is:
+$$
+\mathcal{F}^{-1}\left\{ \frac{1}{1+k^{2}} \right\} = \frac{1}{2} e^{ -|x| }
+$$
+Hence we have:
+$$
+y(x) = -(f*g)(x) = -\frac{1}{2} \int_{-\infty}^{\infty} f(x-z)e^{ -|z| } \, dz
+$$
+---
+Example:
+$$
+\begin{cases}
+u_{xx} + u_{tt} =0 \\
+u(x, 0) = g(x) \\
+u\text{ bdd}
 \end{cases}
 $$
-Compute the FT:
+FT both sides of PDE with respect to $x$
 $$
-\begin{align}
-\hat{f}(k) & = \int_{-\infty}^{\infty} f(x)e^{ -ikx } \, dx  \\
- & = \int_{-a}^{a} e^{ -ikx } \, dx  \\
- & = -\frac{1}{ik} e^{ -ikx } \bigg|^a_{-a} \\
- & = \frac{2}{k} \sin(ak)
-\end{align}
+\hat{u_{xx}}(k, t) + \hat{u_{tt}} (k, t) =0
 $$
-Things to note:
-- This FT has no imaginary part
-- $f$ has compact support and took only the values 0, 1
-	- Compact support means that a function is zero outside of a region
-	- The FT is not compactly supported and takes on a continuum of values
----
-
-A large motivation behind the use of FT is for derivatives. So, lets investigate its behaviour.
-
-Suppose $f(x)$ and $\frac{df}{dx}$ both integrable, then,
+Note that:
 $$
-\begin{align}
-\frac{d}{dx} \hat{f}(k) & = \int_{-\infty}^{\infty} \frac{df}{dx} e^{ -ikx } \, dx = \lim_{ L \to \infty } \int_{-L}^{L} \frac{df}{dx} e^{ -ikx } \, dx  \\
- & = \lim_{ L \to \infty } \left( f(x) e^{ -ikx }|^L_{-L} - \int_{-L}^{L} f(x) (-ik) e^{ -ikx } \, dx  \right)
-\end{align}
+\hat{u_{t}} (k, t) = \int_{-\infty}^{\infty} u_{t}(x, t)e^{ -ikx } \, dx = \frac{ \partial \hat{u}(k, t) }{ \partial t } = \hat{u}_{t}(k, t)
 $$
-$|f(L)|$ and $|f(-L)|$ must tend to zero at $L\to \infty$ because $f$ and $f'$ are integrable over the entire real line. This gives us:
+- Operators of time differentiation and space FT commute
+And therefore the new equation is:
 $$
-= (ik) \int_{-\infty}^{\infty} f(x) e^{ -ikx } \, dx = ik \hat{f}(k)
+(ik)^{2}\hat{u}(k,t) + \hat{u}_{tt}(k, t) =0
 $$
-And so FT transforms differentiation into complex polynomial multiplication.
-
-Under the assumption that all relevant derivatives are integrable, we find the identity:
+And so:
 $$
-\frac{d^{n}}{dx^{n}} \hat{f}(k) = (ik)^{n} \hat{f}(k)
+\begin{cases}
+-k^{2}\hat{u}(k,t) + \hat{u}_{tt}(k,t) =0 \\
+\hat{u}(k,0) = \hat{g}(k)
+\end{cases}
 $$
-Should we be concerned that transformations into Fourier space we are losing information? That is, is it possible to go back to the original function by inverting the FT?
-
-For nice, integrable functions, we have the Fourier inversion formula. Suppose $f$ and $\hat{f}$ are integrable, then:
+Which has the solution:
 $$
-f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \hat{f}(k) e^{ ikx } \, dk
+\hat{u}(k,t) = A(k)e^{ -|k|t } + B(k)e^{ |k|t }
 $$
-The inverse FT of a function $g(k)$ is defined to be:
+We require our solution function to be bounded, and so the Fourier transform must also be bounded. Therefore $B(k)=0$. Now, from boundary conditions:
 $$
-\mathcal{F}^{-1}\{ g \} = \frac{1}{2\pi} \int_{-\infty}^{\infty} g(k) e^{ ikx } \, dk
+\hat{u} = A(k)e^{ -|k|t } \Rightarrow \hat{u}(k,0) = A(k) = \hat{g}(k)
 $$
-And the Fourier inversion formula states that $\mathcal{F}^{-1}\{ \hat{f}(k) \}(x) = f(x)$
-- There's another way to notate the Fourier transform, with an inverted hat, but I cannot find it
-- Hopefully I can find it later
-
----
-Example:
-Find the FT of $f(x)=e^{ -a|x| }$ where $a>0$.
-
+Now invert our function:
 $$
-\begin{align}
-\mathcal{F}\{ e^{ -a|x| } \} & = \int_{-\infty}^{\infty} e^{ -a|x| } e^{ -ikx } \, dx  \\
- & = \int_{-\infty}^{0} e^{ (a-ik)x } \, dx + \int_{0}^{\infty} e^{ -(a+ik)x } \, dx  \\
- & = \lim_{ b \to \infty } \left[ \frac{e^{ (a-ik)x }}{a-ik} \right] ^0_{b} + \lim_{ b \to \infty } \left[ \frac{e^{ -(a+ik)x }}{-a-ik} \right] ^b_{0} \\
- & = \frac{2a}{a^{2}+k^{2}}
-\end{align}
+\mathcal{F}^{-1}\left\{ \hat{g}(k) e^{ -|k|t } \right\} = (g*F)(x, t) = (F*g)(x, t)
+$$
+Where:
+$$
+F = \mathcal{F}^{-1}\left\{ e^{ -|k|t } \right\}  = \frac{1}{2\pi} \frac{2t}{t^{2}+x^{2}} = \frac{t}{\pi(t^{2}+x^{2})}
+$$
+Hence,
+$$
+u(x, t) = (F*g)(x, t) = \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{t}{t^{2}+(x-y)^{2}} g(y) \, dy
 $$
 ---
+### The FT in Higher Space Dimensions
+...
+- Didn't manage to write this stuff down
 
-- Besides that factor of $2\pi$, the only difference between the FT and inverse FT is a sign change in the exponential. 
-Using a neutral variable $y$, for any nice function $g$
+Definition:
+Let $f$ be an integrable function $\mathbb{R}^{N}$. Then,
 $$
-\mathcal{F}\{ g \}(y) = \hat{g}(y) = 2\pi \mathcal{F}^{-1}\{ g \}(-y)
+\hat{f}(\vec{k}) := \int_{-\infty}^{\infty} \dots \int_{-\infty}^{\infty} f(\vec{x})e^{ -i\vec{k}\cdot \vec{x} } \, d\vec{x}
 $$
-So suppose we know the FT of $f(x)$ is some function $g(k)$, and we want to find the FT of $g$. Then,
-$$
-\hat{g}(y) = 2\pi \mathcal{F}^{-1}\{ g \}(-y) = 2\pi \mathcal{F}\{ \mathcal{F}^{-1}\{ f \}(-y) \} = 2\pi f(-y)
-$$
+...
+- Missed more stuff lol
 
----
-Example:
-We have just found:
+Theorem:
+Let $\partial^{\alpha}$ denote the partial derivative associated with the multi-index $\alpha=(\alpha_{1}, \dots, \alpha_{N})$. For any $\vec{k}=(k_{1}, \dots, k_{N})\in \mathbb{R}$. Define polynomial $\vec{k}^{\alpha}$ to be
 $$
-\mathcal{F}\{ e^{ -a|x| } \} = \frac{2a}{a^{2}+k^{2}}
+\vec{k}^{\alpha} = k_{1} ^{\alpha_{1}} k_{2}^{\alpha_{2}} \dots k_{N}^{\alpha_{N}}
 $$
-And therefore we have:
-$$
-\mathcal{F}\left\{  \frac{2a}{a^{2}+x^{2}}  \right\} = 2\pi e^{ -a|k| }
-$$
----
-
-REMEMBER TO UPDATE THE INVERSE FOURIER TRANSFORM NOTATION
+Then we have
+- I COULDN'T WRITE THIS DOWN EITHER FUUUUCK
