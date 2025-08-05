@@ -1,3 +1,58 @@
+### Zeroes of an Analytic Function
+> If an analytic function $f$ on a domain $D$ vanishes on a sequence of distinct points $\{ z_{n} \}$ of $D$, which converges to a point $z_{0}$ of $D$, then $f$ vanishes identically in $D$
+- The zeroes of a non-constant analytic function are *isolated* from each other. They can be counted.
+
+Theorem:
+> Suppose that $h$ is analytic in a domain $D$ except for a finite number of poles. Let $\gamma$ be a piecewise smooth positively oriented simple closed curve in $D$, which does not pass through any pole or zero of $h$ and whose inside lies in $D$. Then,
+$$
+\frac{1}{2\pi i} \int _{\gamma} \frac{h'(z)}{h(z)} \, dz = \text{No. of Zeroes} - \text{No. of Poles}
+$$
+- The zeroes and poles are counted within $\gamma$
+- The zeroes and poles are counted with multiplicity
+
+Argument Principle:
+> Suppose $h$ is analytic on a domain $D$ except for isolated poles. Let $\gamma$ be a piecewise smooth positively oriented simple closed curve in $D$ whose inside lies in $D$ and which does not pass through any zeroes of poles of $h$. Then,
+$$
+\frac{1}{2\pi} \Delta \text{arg}\left\{ h(z) \right\}  = \text{No. Zeroes} - \text{No. Poles}
+$$
+- The change in the argument is computed as $z$ traverses $\gamma$
+- Zeroes and poles are counted within $\gamma$, and with multiplicity
+
+Rouche's Theorem:
+> Suppose $f$ and $g$ are analytic on an open set containing a piecewise smooth simple closed curve $\gamma$ and its inside. If:
+$$
+\left| f(z)+g(z) \right| < \left| f(z) \right| \qquad \text{for all }z\in \gamma
+$$
+> then $f$ and $g$ have an equal number of zeroes inside $\gamma$, counting multiplicities
+### Maximum-Modulus Principle
+Theorem:
+> Suppose that $f$ is a nonconstant analytic function on a domain $D$. Then the range of $f(z)$, as $z$ varies of $D$, is an open set.
+
+Theorem:
+> Suppose that $f$ is a nonconstant analytic function on a domain $D$ and that $f-f(z_{0})$ has a zero of order $m$ at $z_{0}$. Then $f$ is $m$-to-1 near $z_{0}$; in particular, if $f'(z_{0})=0$, then $f$ is not one-to-one in any disc containing $z_{0}$.
+
+The Maximum-Modulus Principle:
+> If $f$ is a nonconstant analytic function on a domain $D$, then $\mathrm{Re}\{ f \}$ has no local maximum and no local minima on $D$
+- The maximum and minimum will always be attained on a boundary
+
+Schwarz's Lemma:
+> Suppose that $f$ is analytic in the disc $|z|<1$, that $f(0)=0$, and that $|f(z)|\leq 1$, for all $z$ in the disc. Then,
+$$
+\left| f(z) \right| \leq |z|, \qquad |z|<1
+$$
+> Equality can hold for some $z\neq 0$ only if $f(z)=\lambda z$, where $\lambda$ is a constant of absolute value 1.
+
+Mean-Value Theorem:
+$$
+f(z_{0}) = \frac{1}{2\pi} \int_{0}^{2\pi} f(z_{0}+re^{ it }) \, dt
+$$
+> Where $\gamma$ is a circle, and $z_{0}$ is the middle of the circle. This is a result directly obtained from Cauchy's Formula.
+
+Notably, as part of the Mean-Value theorem, if we take the real part of both sides, and use $u=\mathrm{Re}\{ f \}$ we find that:
+$$
+u(z_{0}) = \frac{1}{2\pi} \int_{0}^{2\pi} u(z_{0}+re^{ it }) \, dt
+$$
+### Class Notes
 Theorem 29: Argument Principle
 > Let $\Omega$ be a simply connected domain $f:\Omega\to \mathbb{C}$ such that $f$ is analytic except at finitely many poles. Let $\gamma$ be a simple closed contour that doesn't go through poles or zeroes of $f$. Then
 $$
