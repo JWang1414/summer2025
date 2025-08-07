@@ -185,3 +185,117 @@ Invert
 $$
 y(t) = \mathcal{L}^{-1}\left\{  e^{ -s } \frac{1}{s ^{4}}  \right\} = u_{1}(t) \frac{1}{6} (t-1)^{3}
 $$
+---
+### Impulse Functions
+Sometimes we need to deal with phenomena of an impulsive nature. Like forces of large magnitude over a very short interval.
+
+DE's involving the term $g(t)$, where $g(t)$ is large during the short interval $t_{0}-\tau<t<t_{0}+\tau$ for some $\tau>0$, and otherwise 0.
+$$
+I(\tau) := \int_{t_{0}-\tau}^{t_{0}+\tau} g(t) \, dt
+$$
+Is a measure of the strength of the forcing function. We call $I(\tau)$ the total impulse of the force $g(t)$. Now, suppose that $t_{0}=0$ and $g(t)$ is given by:
+$$
+g(t) = d_{\tau}(t) = \begin{cases}
+\frac{1}{2\tau} & -\tau<t<\tau \\
+0 & \text{otherwise}
+\end{cases}
+$$
+By definition of $I(\tau)$, we have $I(\tau)=1$. Consider what happens as $\tau\to 0^+$.
+$$
+\begin{align}
+\lim_{ \tau \to 0^+ } d_{\tau}(t) & =0 \\
+\lim_{ \tau \to 0^+ } I(\tau) & =1
+\end{align}
+$$
+These equations are used to define an idealized "unit impulse function" $\delta$, which impacts an impulse of magnitude 1 at $t=0$, but is zero $\forall t\neq 0$.
+$$
+\begin{cases}
+\delta(t)=0 & \forall t\neq  0 \\
+\int_{-\infty}^{\infty} \delta(t) \, dt =1
+\end{cases}
+$$
+This is what we called the Dirac delta "function" in physics, however, it's really a distribution. Recall that we can shift around the Dirac delta with $\delta(t-t_{0})$.
+
+We define the Laplace transform of this function to be:;
+$$
+\mathcal{L}\{ \delta(t-t_{0}) \} = \lim_{ \tau \to 0^+ } \mathcal{L}\{ d_{\tau}(t-t_{0}) \}
+$$
+Which, since $d_{\tau}$ is a function, can actually be computed.
+$$
+\begin{align}
+\mathcal{L}\{ d_{\tau}(t-t_{0}) \} & = \int_{t_{0}-\tau}^{t_{0}+\tau} e^{ -st }d_{\tau}(t-t_{0}) \, dt  \\
+ & = -\frac{1}{2s\tau}e^{ -st }\bigg|^{t=t_{0}+\tau}_{t=t_{0}-\tau} \\
+ & = \frac{1}{2s\tau} e^{ -st_{0} }(e^{ s\tau }-e^{ -s\tau })
+\end{align}
+$$
+Which is unfortunately undefined as we take the limit $\tau\to 0^+$. So, we use L'Hopital's rule.
+$$
+\lim_{ \tau \to 0^+ } \frac{1}{2s} e^{ -st_{0} } (se^{ s\tau }-se^{ -s\tau }) = e^{ -st_{0} }
+$$
+And so we have the final statement:
+$$
+\mathcal{L}\{ \delta(t-t_{0}) \} = e^{ -st_{0} }
+$$
+For any $t_{0}>0$
+- In a similar fashion we can define the integral of the product of the delta dist, and any continuous function $f(t)$
+$$
+\int_{-\infty}^{\infty} \delta(t-t_{0})f(t) \, dt = f(t_{0})
+$$
+- A familiar quality of the Dirac delta distribution
+
+---
+Example:
+$$
+\begin{cases}
+y''+9y=3\delta(t-2) \\
+y(0)=0, y'(0)=0
+\end{cases}
+$$
+Begin by taking the Laplace transform of the above function:
+$$
+s^{2}Y(s) + 9Y(s) = 3 \mathcal{L}\{ \delta(t-2) \} = 3e^{ -2s }
+$$
+Rearranging
+$$
+Y(s) = \frac{3e^{ -2s }}{s^{2}+9} \Rightarrow y(t) = \mathcal{L}^{-1}\left\{  e^{ -2s } \frac{3}{s^{2}+9}  \right\}
+$$
+Recall that:
+$$
+\mathcal{L}^{-1}\left\{  \frac{3}{s^{2}+9}  \right\} = \sin(3t)
+$$
+Therefore:
+$$
+y(t) = u_{2}(t) \sin(3(t-2))
+$$
+We have used the property:
+$$
+u_{c}(t)f(t-c) = \mathcal{L}^{-1}\{ e^{ -cs }F(s) \}
+$$
+---
+Example:
+$$
+\begin{cases}
+2y''+y'+2y=\delta(t-5) \\
+y(0)=0, y'(0)=0
+\end{cases}
+$$
+Laplace transform the equation:
+$$
+2s^{2}Y(s) + sY(s) + 2Y(s) = e^{ -5s }
+$$
+Solve for $Y(s)$
+$$
+Y(s) = e^{ -5s } \frac{1}{2s^{2}+s+2}
+$$
+Complete the square:
+$$
+= \frac{e^{ -5s }}{2} \frac{1}{\left( s+\frac{1}{4} \right)^{2}+\frac{15}{16} }
+$$
+Which has the inverse Laplace transform,
+$$
+\mathcal{L}^{-1}\left\{  \frac{1}{\left( s+\frac{1}{4} \right)^{2}+\frac{15}{16}}  \right\} = \frac{4}{\sqrt{ 15 }} e^{ -t/4 } \sin\left( \frac{\sqrt{ 15 }}{4}t \right)
+$$
+And so, we have the final answer:
+$$
+y(t) = \frac{1}{2}u_{5}(t) e^{ -(t-5)/4 } \frac{4}{\sqrt{ 15 }} \sin\left( \frac{\sqrt{ 15 }}{4} (t-s) \right)
+$$
