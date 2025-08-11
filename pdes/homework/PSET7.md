@@ -59,3 +59,142 @@ Hence,
 $$
 u(x, y) = (f*g)(x, y) = \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{y}{y^{2}+(x-z)^{2}} g(z) \, dz
 $$
+### Question 1
+---
+a.
+Assume solutions are in the form $u=R(r)\Theta(\theta)$. The Laplace equation becomes:
+$$
+R''\Theta + \frac{1}{r} R'\Theta + \frac{1}{r^{2}} R\Theta'' =0 \implies r^{2} \frac{R''}{R} + r \frac{R'}{R} + \frac{\Theta''}{\Theta} =0
+$$
+Eigenvalue problem:
+$$
+\begin{align}
+\Theta'' + \lambda\Theta & =0 \\
+r^{2} R'' + rR' - \lambda R & =0
+\end{align}
+$$
+---
+b.
+I will begin with the comparatively simpler eigenvalue problem for $\theta$.
+
+Check for $\lambda=0$. The problem becomes:
+$$
+\Theta'' =0 \implies \Theta(\theta) = A\theta + B
+$$
+According to the boundary conditions:
+$$
+\Theta(0) = \Theta(\pi) =0
+$$
+Therefore,
+$$
+A(0) + B = B=0
+$$
+$$
+A(\pi) + B = A\pi =0 \implies A=0
+$$
+I conclude 0 is not an eigenvalue.
+
+Check for $\lambda=-\gamma^{2}<0$. The problem becomes:
+$$
+\Theta'' - \gamma^{2} \Theta =0 \implies \Theta(\theta) = A \cosh(\gamma\theta) + B \sinh(\gamma\theta)
+$$
+From the boundary conditions:
+$$
+\Theta(0) = A \cosh(0) + B \sinh(0) = A =0
+$$
+$$
+\Theta(\pi) = A \cosh(\gamma\pi) + B \sinh(\gamma\pi) = B \sinh(\gamma\pi) =0 \implies B=0
+$$
+Where I have assumed $\gamma \neq 0$. I conclude there are no negative eigenvalues.
+
+Check for $\lambda=\beta^{2}>0$. The problem becomes:
+$$
+\Theta'' + \beta^{2} \Theta =0 \implies \Theta(\theta) = A \cos(\beta\theta) + B \sin(\beta\theta)
+$$
+From the boundary conditions:
+$$
+\Theta(0) = A \cos(0) + B \sin(0) = A =0
+$$
+$$
+\Theta(\pi) = A \cos(\beta \pi) + B \sin(\beta \pi) = B \sin(\beta \pi) =0 \implies \sin(\beta \pi) =0
+$$
+$\sin(\beta \pi)=0$ implies that $\beta \in \mathbb{N}$, and so the positive eigenvalues are $\lambda=n^{2}$ where $n\in \mathbb{N}$. With the associated eigenfunctions:
+$$
+\Theta_{n}(\theta) = \sin(n\theta)
+$$
+For the radial portion, check for solutions in the for $r^{\alpha}$:
+$$
+\begin{align}
+r^{2} R'' + r R' - \lambda R & =0 \\
+r^{2} \alpha(\alpha-1)r^{\alpha-2} + r\alpha r^{\alpha-1} - \lambda r^{\alpha} & =0 \\
+\alpha(\alpha-1)r^{\alpha} + \alpha r^{\alpha} - \lambda r^{\alpha} & =0 \\
+\alpha^{2} - \lambda & =0
+\end{align}
+$$
+And so the eigenvalues are:
+$$
+\alpha^{2} = \lambda \implies \alpha = \pm \sqrt{ \lambda } = \pm \sqrt{ n^{2} } = \pm n
+$$
+With the associated eigenfunctions:
+$$
+R_{n}(r) = C_{n} r^{n} + D_{n}r^{-n}
+$$
+Where I have introduced the two arbitrary constants $C_{n}$ and $D_{n}$. From the first radial boundary condition:
+$$
+u(1, \theta)  =0 \implies R_{n}(1) = C_{n}1^{n} + D_{n}1^{-n} = C_{n} + D_{n} =0 \implies C_{n} =-D_{n}
+$$
+And so the eigenfunctions can be simplified into:
+$$
+R_{n}(r) = C_{n} \left( r^{n} - r^{-n} \right)
+$$
+---
+c.
+Collecting the admissible solutions into a series expansion:
+$$
+u(r, \theta) = \sum_{n=1}^{\infty} R_{n}(r)\Theta_{n}(\theta) = \sum_{n=1}^{\infty} C_{n} \left( r^{n} - r^{-n} \right) \sin(n\theta)
+$$
+---
+d.
+Using the last boundary condition:
+$$
+u(2, \theta) = \sum_{n=1}^{\infty} C_{n} \left( 2^{n}- 2^{-n} \right) \sin(n\theta) = \pi-\theta
+$$
+Which is now a Fourier sine series on the interval $[0, \pi]$. Which has the known coefficients:
+$$
+C_{n} \left( 2^{n}-2^{-n} \right) = \frac{2}{\pi} \int_{0}^{\pi} (\pi-\theta) \sin(n\theta) \, d\theta
+$$
+This integral can be solved analytically. First, by linearity:
+$$
+\int_{0}^{\pi} (\pi-\theta) \sin(n\theta) \, d\theta = \pi \int_{0}^{\pi} \sin(n\theta) \, d\theta - \int_{0}^{\pi} \theta \sin(n\theta) \, d\theta
+$$
+Use integration by parts on the second integral:
+$$
+\begin{align}
+ & = \pi \int_{0}^{\pi} \sin(n\theta) \, d\theta - \left[ -\frac{\theta}{n} \cos(n\theta) \bigg|_{0}^{\pi}  + \frac{1}{n} \int_{0}^{\pi}  \cos(n\theta) \, d\theta  \right]  \\
+ & = \pi \int_{0}^{\pi} \sin(n\theta) \, d\theta + \frac{\theta}{n} \cos(n\theta)\bigg|_{0}^{\pi}  - \frac{1}{n} \int_{0}^{\pi} \cos(n\theta) \, d\theta
+\end{align}
+$$
+This first integral is:
+$$
+\int_{0}^{\pi} \sin(n\theta) \, d\theta = -\frac{1}{n} \cos(n\theta) \bigg|_{0}^{\pi} = \frac{1-\cos(\pi n)}{n}
+$$
+The second is:
+$$
+\int_{0}^{\pi} \cos(n\theta) \, d\theta = \frac{1}{n} \sin)(n\theta) \bigg|_{0}^{\pi}  = \frac{\sin(\pi n)}{n}
+$$
+Therefore,
+$$
+\begin{align}
+\int_{0}^{\pi} (\pi-\theta) \sin(n\theta) \, d\theta  & = \pi \left[ \frac{1-\cos(\pi n)}{n} \right] + \frac{\pi}{n} \cos(\pi n) -0 - \frac{1}{n} \left[ \frac{\sin(\pi n)}{n} \right]  \\
+ & = \frac{\pi}{n} - \frac{\pi}{n} \cos(\pi n) + \frac{\pi}{n} \cos(\pi n) - \frac{\sin(\pi n)}{n^{2}} \\
+ & = \frac{\pi}{n} - \frac{\sin(\pi n)}{n^{2}}
+\end{align}
+$$
+Since $n\in \mathbb{N}$, $\sin(\pi n)=0$ for all $n$, and so I conclude:
+$$
+\int_{0}^{\pi} (\pi-\theta) \sin(n\theta) \, d\theta = \frac{\pi}{n}
+$$
+Substituting this back into the coefficient formula,
+$$
+C_{n} \left( 2^{n}-2^{-n} \right) = \frac{2}{\pi} \left[ \frac{\pi}{n} \right]  = \frac{2}{n} \implies C_{n} = \frac{2}{n(2^{n}-2^{-n})}
+$$
