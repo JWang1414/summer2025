@@ -55,6 +55,10 @@ For any two arbitrary functions $a$ and $b$. Furthermore, I have defined the fun
 $$
 \hat{f} = e^{ -|k|y } \implies f = \mathcal{F}^{-1} \left\{ e^{ -|k|y } \right\} = \frac{1}{2\pi} \frac{2y}{y^{2}+x^{2}} = \frac{y}{\pi(x^{2}+y^{2})}
 $$
+Where I have determine this inverse Fourier transform using the very similar Fourier transform already done in class:
+$$
+\mathcal{F}\{ e^{ -a|x| } \} = \frac{2a}{a^{2}+k^{2}}
+$$
 Hence,
 $$
 u(x, y) = (f*g)(x, y) = \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{y}{y^{2}+(x-z)^{2}} g(z) \, dz
@@ -66,7 +70,7 @@ Assume solutions are in the form $u=R(r)\Theta(\theta)$. The Laplace equation be
 $$
 R''\Theta + \frac{1}{r} R'\Theta + \frac{1}{r^{2}} R\Theta'' =0 \implies r^{2} \frac{R''}{R} + r \frac{R'}{R} + \frac{\Theta''}{\Theta} =0
 $$
-Eigenvalue problem:
+And the associated eigenvalue problem is:
 $$
 \begin{align}
 \Theta'' + \lambda\Theta & =0 \\
@@ -92,7 +96,7 @@ $$
 $$
 A(\pi) + B = A\pi =0 \implies A=0
 $$
-I conclude 0 is not an eigenvalue.
+Both $A$ and $B$ are zero, and I conclude 0 is not an eigenvalue.
 
 Check for $\lambda=-\gamma^{2}<0$. The problem becomes:
 $$
@@ -122,7 +126,7 @@ $\sin(\beta \pi)=0$ implies that $\beta \in \mathbb{N}$, and so the positive eig
 $$
 \Theta_{n}(\theta) = \sin(n\theta)
 $$
-For the radial portion, check for solutions in the for $r^{\alpha}$:
+For the radial portion, check for solutions in the form $r^{\alpha}$:
 $$
 \begin{align}
 r^{2} R'' + r R' - \lambda R & =0 \\
@@ -131,7 +135,7 @@ r^{2} \alpha(\alpha-1)r^{\alpha-2} + r\alpha r^{\alpha-1} - \lambda r^{\alpha} &
 \alpha^{2} - \lambda & =0
 \end{align}
 $$
-And so the eigenvalues are:
+And so, the eigenvalues are:
 $$
 \alpha^{2} = \lambda \implies \alpha = \pm \sqrt{ \lambda } = \pm \sqrt{ n^{2} } = \pm n
 $$
@@ -159,7 +163,7 @@ Using the last boundary condition:
 $$
 u(2, \theta) = \sum_{n=1}^{\infty} C_{n} \left( 2^{n}- 2^{-n} \right) \sin(n\theta) = \pi-\theta
 $$
-Which is now a Fourier sine series on the interval $[0, \pi]$. Which has the known coefficients:
+Which is a Fourier sine series on the interval $[0, \pi]$. The coefficients follow the form:
 $$
 C_{n} \left( 2^{n}-2^{-n} \right) = \frac{2}{\pi} \int_{0}^{\pi} (\pi-\theta) \sin(n\theta) \, d\theta
 $$
@@ -167,34 +171,30 @@ This integral can be solved analytically. First, by linearity:
 $$
 \int_{0}^{\pi} (\pi-\theta) \sin(n\theta) \, d\theta = \pi \int_{0}^{\pi} \sin(n\theta) \, d\theta - \int_{0}^{\pi} \theta \sin(n\theta) \, d\theta
 $$
-Use integration by parts on the second integral:
+Then, using integration by parts on the second integral:
 $$
 \begin{align}
  & = \pi \int_{0}^{\pi} \sin(n\theta) \, d\theta - \left[ -\frac{\theta}{n} \cos(n\theta) \bigg|_{0}^{\pi}  + \frac{1}{n} \int_{0}^{\pi}  \cos(n\theta) \, d\theta  \right]  \\
  & = \pi \int_{0}^{\pi} \sin(n\theta) \, d\theta + \frac{\theta}{n} \cos(n\theta)\bigg|_{0}^{\pi}  - \frac{1}{n} \int_{0}^{\pi} \cos(n\theta) \, d\theta
 \end{align}
 $$
-This first integral is:
+The first integral, with the sine function, is:
 $$
 \int_{0}^{\pi} \sin(n\theta) \, d\theta = -\frac{1}{n} \cos(n\theta) \bigg|_{0}^{\pi} = \frac{1-\cos(\pi n)}{n}
 $$
-The second is:
+The second integral, with the cosine function, is:
 $$
-\int_{0}^{\pi} \cos(n\theta) \, d\theta = \frac{1}{n} \sin)(n\theta) \bigg|_{0}^{\pi}  = \frac{\sin(\pi n)}{n}
+\int_{0}^{\pi} \cos(n\theta) \, d\theta = \frac{1}{n} \sin(n\theta) \bigg|_{0}^{\pi}  = \frac{\sin(\pi n)}{n}
 $$
 Therefore,
 $$
 \begin{align}
 \int_{0}^{\pi} (\pi-\theta) \sin(n\theta) \, d\theta  & = \pi \left[ \frac{1-\cos(\pi n)}{n} \right] + \frac{\pi}{n} \cos(\pi n) -0 - \frac{1}{n} \left[ \frac{\sin(\pi n)}{n} \right]  \\
  & = \frac{\pi}{n} - \frac{\pi}{n} \cos(\pi n) + \frac{\pi}{n} \cos(\pi n) - \frac{\sin(\pi n)}{n^{2}} \\
- & = \frac{\pi}{n} - \frac{\sin(\pi n)}{n^{2}}
+ & = \frac{\pi}{n} - \frac{\sin(\pi n)}{n^{2}} = \frac{\pi}{n}
 \end{align}
 $$
-Since $n\in \mathbb{N}$, $\sin(\pi n)=0$ for all $n$, and so I conclude:
-$$
-\int_{0}^{\pi} (\pi-\theta) \sin(n\theta) \, d\theta = \frac{\pi}{n}
-$$
-Substituting this back into the coefficient formula,
+Where, in the final step, I have used the fact that $n\in \mathbb{N}$, and so $\sin(\pi n)=0$. Substituting this back into the coefficient formula,
 $$
 C_{n} \left( 2^{n}-2^{-n} \right) = \frac{2}{\pi} \left[ \frac{\pi}{n} \right]  = \frac{2}{n} \implies C_{n} = \frac{2}{n(2^{n}-2^{-n})}
 $$
