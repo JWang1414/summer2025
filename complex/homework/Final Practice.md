@@ -87,3 +87,42 @@ $$
 \frac{d}{dz} z^{s} = s (z^{s})\left( \frac{1}{z} \right) = s \frac{z^{s}}{z}
 $$
 ### Question 4
+Recall, Cauchy's integral formula:
+$$
+f(z) = \frac{1}{2\pi i} \int_{\gamma} \frac{f(\xi)}{\xi-z} \, d\xi
+$$
+Which is valid for some analytic function $f$ on a domain $D$, where $\gamma$ is a piecewise smooth, positively oriented simple closed curve in $D$ whose inside $\Omega$ also lies in $D$.
+
+Note the the defined domain, the circle of radius 3 centred at the origin, is valid for this theorem to be applied. Furthermore, the function:
+$$
+f(z) = \frac{\sin z + e^{ z }}{(z-2\pi)}
+$$
+is analytic on the defined domain. The full integral can be re-written:
+$$
+\int _{|\xi|=3} \frac{\sin \xi + e^{ \xi }}{(\xi-1)(\xi-2\pi)} \, d\xi
+$$
+Where I have, for simplicity, used the substitution $z=\xi$. Now, it can easily be seen that this integral is equal to:
+$$
+\int _{|\xi|=3} \frac{f(\xi)}{(\xi-1)} \, d\xi = 2\pi i f(1) = 2\pi i \left[ \frac{\sin(1) + e}{1-2\pi} \right]
+$$
+### Question 5
+The Taylor series for $\sin z$ is:
+$$
+\sin z = \sum_{k=0}^{\infty} \frac{(-1)^{k}}{(2k+1)!} z^{2k+1}
+$$
+Therefore:
+$$
+\frac{1}{\sin z} = \sum_{k=0}^{\infty} (-1)^{-k} z^{-2k-1} (2k+1)!
+$$
+Which is equivalent to:
+$$
+\sum_{k=-\infty}^{0} (-1)^{k} z^{2k-1}(1-2k)!
+$$
+Notice that the function $\sin ^{-1}(z)$ has just one singularity within the unit circle centred at zero. Therefore, according to the residue theorem:
+$$
+\int _{\gamma} f(z) \, dz = 2\pi i \sum_{z_{k} \text{ within }\gamma} \text{Res}(f;z_{k})
+$$
+Where $z_{k}$ denote the finite number of zeroes within $\gamma$. This residue is equal to the -1th term of the Laurent series, defined above, which is:
+$$
+(-1)^{-1} z^{2(-1)-1} (1-2(-1))! = \frac{1}{-1} z^{-3} (3)! = -\frac{6}{z^{3}}
+$$
