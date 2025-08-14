@@ -254,3 +254,173 @@ $$
 ### Question 10
 ---
 a.
+This function will have singularities when $\cos z=0$ and when $\sin ^{2}(3z)=0$.
+$$
+\cos z=0 \implies z = \left( n+\frac{1}{2} \right)\pi
+$$
+Where $n\in \mathbb{Z}$.
+$$
+\sin ^{2}(3z)=0 \implies \sin(3z)=0 \implies 3z = n\pi \implies z = \frac{n}{3}\pi
+$$
+Where $n\in \mathbb{Z}$.
+
+The Taylor series for this function is:
+$$
+f(z) = \frac{\cos z}{\sin ^{2}(3z)} = \left( \sum_{n=0}^{\infty} \frac{(-1)^{n} z^{2n}}{(2n)!} \right) \left( - \sum_{k=1}^{\infty} \frac{(2k)!}{(-1)^{k}2^{2k-1}(3z)^{2k}} \right)
+$$
+The first few terms of this series are:
+$$
+\frac{1}{9z^{2}} + \frac{5}{18} + \frac{473}{1080}z^{2} + \dots
+$$
+- I can tell from derivatives that the singularities from $\cos z$ are removable, and have order 1
+- The poles from $\sin ^{-2}(3z)$ appear to be essential, but I feel like my logic is incorrect. Perhaps the fact that there is a $z^{2}$ in the denominator of the first term implies that they have order 2? But after taking two derivatives it still blows up.
+---
+b.
+This function is similar to the function
+$$
+e^{ 1/z }
+$$
+Which has an essential singularity when $z=0$. I conclude that there is an essential singularity when $\sin z=0$
+$$
+\sin z=0 \implies z=n\pi
+$$
+Where $n\in \mathbb{Z}$
+
+---
+c.
+Solve for roots:
+$$
+e^{ iz }-1=0 \implies e^{ iz } = \cos z + i \sin z =1 \implies \cos z=1 \implies z=2\pi k
+$$
+Where $k\in \mathbb{Z}$.
+$$
+\sin 4z =0 \implies 4z = n\pi \implies z = \frac{\pi}{4} n
+$$
+Where $n\in \mathbb{Z}$.
+
+Try the Taylor series expansion:
+$$
+\begin{align}
+h(z) & = \frac{e^{ iz }-1}{\sin(4z)} = \left[ \sum_{k=0}^{\infty} \frac{(iz)^{k}}{k!} -1 \right] \left[ \sum_{n=0}^{\infty} \frac{(-1)^{n}}{(2n+1)!} (4z)^{2n+1} \right]^{-1} \\
+ & = \left[ \sum_{k=1}^{\infty} \frac{(iz)^{k}}{k!} \right] \left[ \sum_{n=0}^{\infty} \frac{(2n+1)!}{(-1)^{n} (4z)^{2n+1}} \right] 
+\end{align}
+$$
+Which has the first few terms:
+$$
+\frac{i}{4} - \frac{z}{8} + \frac{5i}{8}z^{2} - \frac{31}{96}z^{3} + \frac{109i}{96} z^{4} - \frac{571}{960} z^{5} + \dots
+$$
+Which tells me that the 0/0 at $2\pi k$ is finite, and a removable singularity. Use L'Hopital's rule, we have:
+$$
+\frac{e^{ iz }-1}{\sin(4z)} \implies \frac{ie^{ iz }}{4 \cos(4z)} = \frac{ie^{ i(2\pi k) }}{4 \cos(4(2\pi k))} = \frac{i (1)}{4(1)} = \frac{i}{4}
+$$
+- I also have no idea how to classify the order of this pole. I want to say it has order one, because the derivative of sine is cosine, which is not zero at all these points
+---
+### Question 11
+The Maximum-Modulus Principle:
+> If $f$ is a nonconstant analytic function on a domain $D$, then $\mathrm{Re}\{ f \}$ has no local maximum and no local minima on $D$
+
+Define a new function $g=1 /f$. Then, on the set $U$ we have:
+$$
+0 > \left| g(z_{0}) \right|  \geq \left| g(z) \right|
+$$
+Since $|f(z)|>0$ for all points in $U$, I know that $g(z)$ is bounded on this domain. By the maximum modulus principle, $g(z)$ must also attain its maxima on the boundary of the open set $U$. Furthermore, it also claims that $g$ has no local maxima within $U$.
+
+That is, the Maximum-modulus principle implies that, on the domain $U$, if it has some local maxima at $z_{0}$, then $g$ must be a constant function. Therefore, $f=1 /g$ is also a constant function.
+
+---
+### Question 12
+Theorem 30: Rouche's Theorem
+> If $f$, $g$ are analytic functions on and inside a simple closed contour $\gamma$, and $|f|>|g|$ on $\gamma$, then $f$ and $f+g$ have the same number of zeroes in $\gamma$
+
+First, find the number of zeroes in the circle with radius 2.
+
+Choose the functions:
+$$
+f(z) = z^{7} \qquad g(z) = -5z^{3}+12
+$$
+On the circle $|z|=2$ we have:
+$$
+\begin{align}
+|f(z)|  & = |2^{7}| \\
+|g(z)|  & = |-5(2)^{3}+12| = |-28|=28
+\end{align}
+$$
+In this case, $2^{7}>28$ and so $|f|>|g|$. Therefore, $f$ and $f+g$ have the same number of zeroes in $\gamma$. This implies that the original function has 7 zeroes within this region.
+
+Second, find the number of zeroes with the circle of radius 1.
+
+Choose the functions:
+$$
+f(z)=12 \qquad g(z) = z^{7} - 5z^{3}
+$$
+On the circle $|z|=1$ we have:
+$$
+\begin{align}
+|f(z)|  & = 12 \\
+|g(z)|  & = |z^{7}-5z^{3}| = |1-5(1)| = |1-5| = |-4| = 4
+\end{align}
+$$
+And therefore we have $|f|>|g|$. And so I conclude this function has no zeroes within this region.
+
+I conclude that this function has 7 zeroes in the annulus $1<|z|<2$
+### Question 13
+Argument Principle:
+> Suppose $h$ is analytic on a domain $D$ except for isolated poles. Let $\gamma$ be a piecewise smooth positively oriented simple closed curve in $D$ whose inside lies in $D$ and which does not pass through any zeroes of poles of $h$. Then,
+$$
+\frac{1}{2\pi} \Delta \text{arg}\left\{ h(z) \right\}  = \text{No. Zeroes} - \text{No. Poles}
+$$
+
+By observation, this function have no poles in the first quadrant. To use the principle, I will first find the change in argument over the real axis $[0, R]$.
+
+Along the real axis we have $z=x$ where $x \in \mathbb{R}$. In this case, $f(x)$ is an entirely real valued function, and so $\Delta \arg(f)=0$
+
+Now, use the parametrization $R e^{ it }$ where $t\in[0, \pi /2]$. We have:
+$$
+\begin{align}
+f(R e^{ it }) & = (R e^{ it })^{4} + (R e^{ it })^{3} + 5(R e^{ it })^{2} + 2(R e^{ it }) + 4 \\
+ & = R^{4} e^{ 4it } \left( 1 + \frac{1}{R e^{ it }} + \frac{5}{R^{2} e^{ 2it }} + \frac{2}{R^{3} e^{ 3it }} + \frac{4}{R^{4}e^{ 4it }} \right)
+\end{align}
+$$
+Taking the limit as $R\to \infty$, the argument change can be isolated to $e^{ 4it }$.
+$$
+\Delta \arg(e^{ 4it }) = 4\left( \frac{\pi}{2} \right) = 2\pi
+$$
+Along the imaginary axis, use $z=iy$. The function is now:
+$$
+f(iy) = (iy)^{4} + (iy)^{3} + 5(iy)^{2} + 2(iy) + 4 = y^{4} -iy^{3} -5y^{2}+2iy +4
+$$
+Visualise the change in argument using the imaginary are real parts:
+$$
+\begin{align}
+\mathrm{Re}\left\{ f(iy) \right\} & = y^{4} -5y^{2}+4 \\
+\mathrm{Im}\left\{ f(iy) \right\}  & = -y^{3} + 3y
+\end{align}
+$$
+When $y\to \infty$ it lies to the right on the real axis. As $y\to 0$ it approaches 4 on the real axis. Furthermore, as $y$ decreases, the function goes into the fourth quadrant. This implies that $\arg(f)$ decreases by $2\pi$. 
+
+Hence, the number of zeroes is:
+$$
+\frac{1}{2\pi} \Delta\arg(f) = \frac{1}{2\pi} (2\pi-2\pi) = \frac{1}{2\pi}(0) =0
+$$
+### Question 14
+Try using Rouche's theorem. Define the two new functions:
+$$
+h(z) = z^{5} \qquad g(z) = z+1
+$$
+Along the circle $|z|=2$ we have:
+$$
+\begin{align}
+|h|  & = 2^{5} \\
+|g|  & = 2+1 =3
+\end{align}
+$$
+We have $2^{5}>3$ and therefore $|h|>|g|$ I conclude that $h+g$ has the same number of zeroes as $h$ within this domain.
+
+By observation, $h$ has 5 zeroes within this domain. Furthermore:
+$$
+h+g = z^{5} + z+1 = f
+$$
+And so $f$ has 5 zeroes within the disk $D$.
+### Question 15
+---
+a.
