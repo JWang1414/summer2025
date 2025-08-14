@@ -247,6 +247,10 @@ By residue theorem:
 $$
 \int _{\gamma} \frac{e^{ iz }}{(z^{2}+1)^{2} ((z-3)^{2}+1)} \, dz = 2\pi i \left[ \frac{51-148i}{3042e} - \left( \frac{2}{507} + \frac{5i}{3042} \right)e^{ 3i-1 } \right]
 $$
+Taking the imaginary part, I conclude that the value of the original integral is:
+$$
+\int_{-\infty}^{\infty} \frac{\sin x}{(x^{2}+1)^{2}((x-3)^{2}+1)} \, dx = 2\pi \left( \frac{17}{1014e} - \frac{2 \cos(3)}{507e} + \frac{5 \sin(3)}{3042e} \right)
+$$
 ### Question 10
 ---
 a.
