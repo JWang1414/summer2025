@@ -254,26 +254,22 @@ $$
 ### Question 10
 ---
 a.
-This function will have singularities when $\cos z=0$ and when $\sin ^{2}(3z)=0$.
+The singularities are located where $\cos z=0$ and $\sin ^{2}(3z)=0$. These are:
 $$
-\cos z=0 \implies z = \left( n+\frac{1}{2} \right)\pi
-$$
-Where $n\in \mathbb{Z}$.
-$$
-\sin ^{2}(3z)=0 \implies \sin(3z)=0 \implies 3z = n\pi \implies z = \frac{n}{3}\pi
+\cos z=0 \Rightarrow z = \left( n+\frac{1}{2} \right)\pi
 $$
 Where $n\in \mathbb{Z}$.
+$$
+\sin ^{2}(3z) =0 \Rightarrow \sin(3z)=0 \Rightarrow 3z = n\pi \Rightarrow z = \frac{n}{3}\pi
+$$
+Where $n\in \mathbb{Z}$. Notice that the singularities from the cosine and sine functions, in this case, never overlap. Therefore, this function has a pole at all $n\pi /3$.
 
-The Taylor series for this function is:
+The Taylor series of $\sin z$ is:
 $$
-f(z) = \frac{\cos z}{\sin ^{2}(3z)} = \left( \sum_{n=0}^{\infty} \frac{(-1)^{n} z^{2n}}{(2n)!} \right) \left( - \sum_{k=1}^{\infty} \frac{(2k)!}{(-1)^{k}2^{2k-1}(3z)^{2k}} \right)
+\sin z = \sum_{k=0}^{\infty} \frac{(-1)^{k}}{(2k+1)!}z^{2k+1} = x - \frac{x^{3}}{6} + \frac{x^{5}}{120} + \dots
 $$
-The first few terms of this series are:
-$$
-\frac{1}{9z^{2}} + \frac{5}{18} + \frac{473}{1080}z^{2} + \dots
-$$
-- I can tell from derivatives that the singularities from $\cos z$ are removable, and have order 1
-- The poles from $\sin ^{-2}(3z)$ appear to be essential, but I feel like my logic is incorrect. Perhaps the fact that there is a $z^{2}$ in the denominator of the first term implies that they have order 2? But after taking two derivatives it still blows up.
+Which will be non-zero after one derivative. Implying that the pole for $1 /\sin z$ is of order 1. Therefore, I conclude that the pole from $1 /\sin ^{2}(3z)$ has order 2.
+
 ---
 b.
 This function is similar to the function
@@ -288,32 +284,22 @@ Where $n\in \mathbb{Z}$
 
 ---
 c.
-Solve for roots:
+Find the roots of the numerator and denominator:
 $$
-e^{ iz }-1=0 \implies e^{ iz } = \cos z + i \sin z =1 \implies \cos z=1 \implies z=2\pi k
+e^{ iz }-1 =0 \Rightarrow e^{ iz } = \cos z + i \sin z =1 \Rightarrow \cos z =1 \Rightarrow z=2\pi k
 $$
 Where $k\in \mathbb{Z}$.
 $$
-\sin 4z =0 \implies 4z = n\pi \implies z = \frac{\pi}{4} n
+\sin(4z) = 0 \Rightarrow 4z = n\pi \Rightarrow z = \frac{n}{4} \pi
 $$
-Where $n\in \mathbb{Z}$.
+Where $n\in \mathbb{Z}$. Both the numerator and denominator are 0 at intervals of $2\pi k$. According to L'Hopital's rule:
+$$
+\lim_{ z \to 2\pi k } \frac{e^{ iz }-1}{\sin(4z)} = \lim_{ z \to 2\pi k } \frac{ie^{ iz }}{4 \cos(4z)} = \frac{i}{4}
+$$
+I conclude that there is a removable singularity at every interval $2\pi k$. All other poles at $n\pi /4$ have order 1.
 
-Try the Taylor series expansion:
-$$
-\begin{align}
-h(z) & = \frac{e^{ iz }-1}{\sin(4z)} = \left[ \sum_{k=0}^{\infty} \frac{(iz)^{k}}{k!} -1 \right] \left[ \sum_{n=0}^{\infty} \frac{(-1)^{n}}{(2n+1)!} (4z)^{2n+1} \right]^{-1} \\
- & = \left[ \sum_{k=1}^{\infty} \frac{(iz)^{k}}{k!} \right] \left[ \sum_{n=0}^{\infty} \frac{(2n+1)!}{(-1)^{n} (4z)^{2n+1}} \right] 
-\end{align}
-$$
-Which has the first few terms:
-$$
-\frac{i}{4} - \frac{z}{8} + \frac{5i}{8}z^{2} - \frac{31}{96}z^{3} + \frac{109i}{96} z^{4} - \frac{571}{960} z^{5} + \dots
-$$
-Which tells me that the 0/0 at $2\pi k$ is finite, and a removable singularity. Use L'Hopital's rule, we have:
-$$
-\frac{e^{ iz }-1}{\sin(4z)} \implies \frac{ie^{ iz }}{4 \cos(4z)} = \frac{ie^{ i(2\pi k) }}{4 \cos(4(2\pi k))} = \frac{i (1)}{4(1)} = \frac{i}{4}
-$$
-- I also have no idea how to classify the order of this pole. I want to say it has order one, because the derivative of sine is cosine, which is not zero at all these points
+I know they have order 1 because after one derivative $\sin z$ is $\cos z$ which is not zero at that point. Same argument as (a).
+
 ---
 ### Question 11
 The Maximum-Modulus Principle:
@@ -424,3 +410,14 @@ And so $f$ has 5 zeroes within the disk $D$.
 ### Question 15
 ---
 a.
+To compute a Laurent series, I must expand 1 in terms of $z$. The coefficients follow the form:
+$$
+a_{n} = \frac{f^{(n)}(z_{0})}{n!}
+$$
+Where $f$ is the function in the numerator.
+
+All derivatives of 1 are 0, and so all the coefficients are zero. However, this function is already in the form of a Laurent series. It is convergent everywhere except for $z=0$.
+
+---
+b.
+This function has 3 poles. The Laurent series will be convergent on the unit circle around each of these three poles: $z=0,1, 2$. 
