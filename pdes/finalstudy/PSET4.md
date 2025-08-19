@@ -104,3 +104,114 @@ $$
 \omega = \pm \sqrt{ m^{2}-(ck)^{2} } \qquad k = \pm \frac{\sqrt{ m^{2}-\omega^{2} }}{c}
 $$
 ### Question 3
+This is the Dirichlet problem for the homogeneous wave equation on the finite line. The solutions for this problem follow the form:
+$$
+u(x, t) = \sum_{n=1}^{\infty} \left[ c_{n} \cos\left( \frac{n\pi ct}{l} \right) + d_{n} \sin\left( \frac{n\pi ct}{l} \right) \right] \sin\left( \frac{n\pi x}{l} \right)
+$$
+I will solve for the coefficients via coefficient matching. The initial functions must follow the form:
+$$
+\phi(x) = \sum_{n=1}^{\infty} c_{n} \sin\left( \frac{n\pi x}{l} \right) \qquad \psi(x) = \sum_{n=1}^{\infty} \frac{n\pi c}{l} d_{n} \sin\left( \frac{n\pi x}{l} \right)
+$$
+Where $\phi(x)=u(x, 0)$ and $\psi(x)=u_{t}(x, 0)$. Substituting into these formulae,
+$$
+\sin\left( \frac{2\pi x}{l} \right) = \sum_{n=1}^{\infty} c_{n} \sin\left( \frac{n\pi x}{l} \right) \implies \sin\left( \frac{2\pi x}{l} \right) = c_{2} \sin\left( \frac{2\pi x}{l} \right) \implies c_{2}=1
+$$
+$$
+\begin{align}
+\sin\left( \frac{3\pi x}{l} \right) & = \sum_{n=1}^{\infty} \frac{n\pi c}{l} d_{n} \sin\left( \frac{n\pi x}{l} \right) \\
+\sin\left( \frac{3\pi x}{l} \right) & = \frac{3\pi c}{l} d_{3} \sin\left( \frac{3\pi x}{l} \right) \\
+d_{3} & = \frac{l}{3\pi c}
+\end{align}
+$$
+All other coefficients must be zero. The full solution can be written:
+$$
+\begin{align}
+u(x, t) & = c_{2} \cos\left( \frac{2\pi ct}{l} \right) \sin\left( \frac{2\pi x}{l} \right) + d_{3} \sin\left( \frac{3\pi ct}{l} \right) \sin\left( \frac{3\pi x}{l} \right) \\
+ & = \cos\left( \frac{2\pi ct}{l} \right) \sin\left( \frac{2\pi x}{l} \right) + \frac{l}{3\pi c} \sin\left( \frac{3\pi ct}{l} \right) \sin\left( \frac{3\pi x}{l} \right)
+\end{align}
+$$
+### Question 4
+---
+a.
+Assume that solutions are in the for $X(x)T(t)$. Then, the PDE becomes:
+$$
+X(x)T'(t)=kX''(x)T(t) \implies -\frac{T'(t)}{kT(t)} = -\frac{X''(x)}{X(x)} = \lambda
+$$
+Which yields the eigenvalue problem:
+$$
+\begin{align}
+X''+\lambda X & = 0 \\
+T'+\lambda kT & = 0
+\end{align}
+$$
+---
+b.
+I will begin with the comparatively simpler $X$ eigenvalue problem.
+
+Check if the boundary conditions are symmetric. Define $X_{1}$ and $X_{2}$ as two functions which satisfy the boundary conditions. Then,
+$$
+[X_{1}'X_{2} - X_{1}X_{2}']^{\pi}_{0} = X_{1}'(\pi)X_{2}(\pi) - X_{1}(\pi)X_{2}'(\pi) - (X_{1}'(0)X_{2}(0) - X_{1}(0)X_{2}'(0))
+$$
+According to the boundary conditions, we have $X'(0)=X(\pi)=0$ and therefore the above collapses into:
+$$
+= 0-0-(0-0) =0
+$$
+I conclude that these boundary conditions are symmetric. Now, I will attempt to apply the "negative eigenvalue" theorem.
+$$
+[XX']^{\pi}_{0} = X(\pi)X'(\pi) - X(0)X'(0) = 0-0 \leq 0
+$$
+By the negative eigenvalue theorem, there are no negative eigenvalues.
+
+Check for $\lambda=0$. Then, the problem becomes:
+$$
+X'' =0 \implies X(x) = A+Bx
+$$
+From the boundary conditions:
+$$
+u_{x}(0, t) = X'(0) = B=0
+$$
+$$
+u(\pi, t) = X(\pi) = A+B\pi = A+0 =0 \implies A=0
+$$
+Both $A$ and $B$ are zero, so I conclude that 0 is not an eigenvalue.
+
+Check for $\lambda=\beta^{2}>0$. Then, the problem becomes:
+$$
+X'' + \beta^{2}X =0 \implies X(x) = A \cos(\beta x) + B \sin(\beta x)
+$$
+$$
+X'(x) = -A\beta \sin(\beta x) + B\beta \cos(\beta x)
+$$
+From the boundary conditions:
+$$
+X'(0) = -A\beta \sin(0) + B \beta \cos(0) = B\beta =0 \implies B=0
+$$
+$$
+X(\pi) = A \cos(\beta \pi) =0 \implies \cos(\beta \pi)=0
+$$
+I conclude that $\beta=n + 1 /2$ where $n\in \mathbb{N}$. The eigenvalues are therefore,
+$$
+\lambda_{n} = \left( n+\frac{1}{2} \right)^{2}
+$$
+With the associated eigenfunctions:
+$$
+X_{n}(x) = \cos \left[ \left( n+\frac{1}{2} \right)x \right]
+$$
+For the temporal part. We have:
+$$
+T' + \lambda kT =0 \implies T' =-\lambda kT \implies T(t) = e^{ -\lambda kt } = \exp \left\{  -\left( n+\frac{1}{2} \right)^{2}kt  \right\}
+$$
+---
+Collecting all the admissible solutions into a series expansion:
+$$
+u(x, t) = \sum_{n=1}^{\infty} A_{n} \cos\left( \left( n+\frac{1}{2} \right)x \right) \exp \left\{  -\left( n+\frac{1}{2} \right)^{2}kt  \right\}
+$$
+---
+From the initial conditions:
+$$
+u(x, 0) = \sum_{n=1}^{\infty} A_{n} \cos\left( \left( n+\frac{1}{2} \right)x \right) = \phi(x)
+$$
+Which is a Fourier cosine series on the interval $[0, \pi]$. The coefficients are:
+$$
+A_{n} = \frac{2}{\pi} \int_{0}^{\pi} \phi(x) \cos\left( \left( n+\frac{1}{2} \right)x \right) \, dx
+$$
