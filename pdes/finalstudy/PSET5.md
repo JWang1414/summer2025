@@ -149,3 +149,107 @@ Plugging into one of the equations for $B$ we have:
 $$
 B = \frac{1}{a} \left( \frac{ab}{b-a}\ln\left( \frac{a}{b} \right) \right) - \ln a = \frac{b}{b-a} \ln\left( \frac{a}{b} \right) - \ln a
 $$
+- I solved the ODE incorrectly but everything else is correct
+### Question 4
+---
+a.
+Assume that the solution will be in the form $X(x)Y(y)$. Then, we have:
+$$
+X''Y + Y''Y =0 \implies \frac{X''}{X} = - \frac{Y''}{Y} = \lambda
+$$
+Which yields the eigenvalue problem:
+$$
+\begin{align}
+X'' - \lambda X =0 \\
+Y'' + \lambda Y =0
+\end{align}
+$$
+For some constant $\lambda$.
+
+---
+b.
+Due to the more defined boundary conditions, I will first focus on the problem in the $Y$. The boundary conditions are:
+$$
+u(x, 0) = Y(0) =0 \qquad u(x, b) = Y(b) =0
+$$
+Check if the boundary conditions are symmetric. Define two functions $X_{1}$ and $X_{2}$, both of which follow the boundary conditions:
+$$
+\begin{align}
+\left[ X_{1}'X_{2} - X_{1}X_{2}' \right] ^{b}_{0} & = \left[ X_{1}'(b)X_{2}(b) - X_{1}(b)X_{2}'(b) \right] - \left[ X_{1}'(0)X_{2}(0) - X_{1}(0)X_{2}'(0) \right]  \\
+ & = (0-0) - (0-0) \\
+ & = 0
+\end{align}
+$$
+Therefore, these boundary conditions are symmetric. I will attempt to use the "negative eigenvalue" theorem on the function $X$, which I define to fit the boundary conditions:
+$$
+\left[ XX' \right] ^{b}_{0} = X(b)X'(b) - X(0)X'(b) = 0-0 \leq 0
+$$
+So there are no negative eigenvalues.
+
+Check for $\lambda=0$. Then, the eigenvalue problem becomes:
+$$
+Y'' + \lambda Y = Y'' =0 \implies Y(y) = A+By
+$$
+From the boundary conditions:
+$$
+A+B(0) = A =0
+$$
+$$
+A+B(b) = 0 + Bb \implies B=0
+$$
+Where I have assumed $b>0$ in the second line. I conclude 0 is not an eigenvalue.
+
+Check for $\lambda=\beta^{2}>0$.
+$$
+Y'' + \beta^{2}Y  =0 \implies Y'' =-\beta^{2}Y \implies Y(y) = A \cos(\beta y) + B \sin(\beta y)
+$$
+From the boundary conditions:
+$$
+Y(0) = A \cos(0) + B \sin(0) = A =0
+$$
+$$
+Y(b) = B \sin(\beta b) =0 \implies \sin(\beta b) =0
+$$
+For this to be true, $\beta b$ must be a multiple of $\pi$.
+$$
+\beta b = n\pi \implies \beta = \frac{n\pi}{b}
+$$
+Where $n\in \mathbb{N}$. I conclude that the positive eigenvalues are:
+$$
+\lambda_{n} = \beta^{2} = \left( \frac{n\pi}{b} \right)^{2}
+$$
+With the associated eigenfunctions:
+$$
+Y_{n}(y) = \sin\left( \frac{n\pi y}{b} \right)
+$$
+Turning my attention to the $X$ part. The eigenvalue problem to solve is:
+$$
+X'' - \lambda X =0 \implies X'' = \lambda X \implies X(x) = A \cosh(\sqrt{ \lambda }x) + B \sinh(\sqrt{ \lambda }x)
+$$
+From the boundary conditions:
+$$
+u(0, y) = X(0) = A \cosh(0) + B \sinh(0) = A =0
+$$
+Therefore, the eigenfunctions are:
+$$
+X_{n}(x) = \sinh\left( \frac{n\pi x}{b} \right)
+$$
+---
+c.
+Expressing the admissible solutions as a series expansion:
+$$
+u(x, y) = \sum_{n=1}^{\infty} A_{n} \sinh\left( \frac{n\pi x}{b} \right)\sin\left( \frac{n\pi y}{b} \right)
+$$
+---
+d.
+From the last boundary condition, we have:
+$$
+u(a, y) = \sum_{n=1}^{\infty} A_{n} \sinh\left( \frac{n\pi a}{b} \right)\sin\left( \frac{n\pi y}{b} \right) = f(y)
+$$
+Which is a Fourier sine series. Therefore, the coefficients are:
+$$
+\begin{align}
+A_{n} \sinh\left( \frac{n\pi a}{b} \right) & = \frac{2}{b} \int_{0}^{b} f(y) \sin\left( \frac{n\pi y}{b} \right) \, dy \\
+A_{n} & = \frac{2}{b} \sinh ^{-1}\left( \frac{n\pi a}{b} \right) \int_{0}^{b} f(y) \sin\left( \frac{n\pi y}{b} \right) \, dy 
+\end{align}
+$$
